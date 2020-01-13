@@ -1,6 +1,6 @@
-
-*** Settings ***
-Library     Selenium2Library    
+***Settings***
+Library    Selenium2Library       
+ 
 Resource    ../../Resources/dropdownlist.robot  
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
@@ -18,7 +18,7 @@ CustomerAdd
     Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]   
 Company Name NotNull
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]s     30s
     Initial data  ${customer1}
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="savebtn"]    30s
     Selenium2Library.Click Button   xpath=//*[@id="savebtn"]
@@ -77,7 +77,7 @@ Email NotNull
     Log to Console   "PASS"
      Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
    
-  
+***Comment***
 Email MaxLength
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
     Initial data   ${customer6}
@@ -87,6 +87,7 @@ Email MaxLength
     Log to Console   "PASS"
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
 
+***Test Cases***
 
 Email Invalid 
     Reload Page
@@ -157,6 +158,7 @@ First Name text number not allowed
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 First Name text before space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
     Initial data   ${customer14}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
@@ -166,6 +168,7 @@ First Name text before space
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 First Name text after space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
     Initial data   ${customer15}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
@@ -174,11 +177,11 @@ First Name text after space
     Log to Console   "PASS"
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
-***Comment***
 
 Middle Name Special character not allowed
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer16}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -186,8 +189,9 @@ Middle Name Special character not allowed
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
 
 Middle Name text number not allowed
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer17}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -195,8 +199,9 @@ Middle Name text number not allowed
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 Middle Name text before space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer18}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -204,8 +209,9 @@ Middle Name text before space
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 Middle Name text after space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer19}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -215,8 +221,9 @@ Middle Name text after space
 
 
 Last Name notNull
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer20}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -225,8 +232,9 @@ Last Name notNull
     
 
 Last Name Special character not allowed
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer21}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -234,8 +242,9 @@ Last Name Special character not allowed
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 Last Name text number not allowed
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer22}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -243,8 +252,9 @@ Last Name text number not allowed
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 Last Name text before space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer23}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -252,8 +262,9 @@ Last Name text before space
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
     
 Last Name text after space
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
+    Initial data   ${customer24}
     Selenium2Library.Click Button   xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
     Page Should Contain  Updating Data
@@ -274,7 +285,7 @@ Primary Country Code validation
     list all     pcountrycode
     list select value    pcountrycode
     list multiple selection    pcountrycode
-    
+***Comment***
 Primary Number NULL validation
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
     Initial data   ${customer7}
