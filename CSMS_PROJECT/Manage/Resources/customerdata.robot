@@ -24,20 +24,20 @@ Initial data
     
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]   ${data['snumber']}
     Selenium2Library.Select From List By Index   xpath=//select[@id="countrycode"]        ${data['pcountrycode']}
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]   ${data['faxnum']}
+    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]   ${data['faxnum1']}
     Selenium2Library.Select From List By Index   xpath=//select[@id="faxcountrycode"]  ${data['pcountrycode']}
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]   ${data['faxnum']}    
-    Selenium2Library.Input Text    xpath=//input[@id="paddress1"]   ${data['address1']}
-    Selenium2Library.Input Text    xpath=//input[@id="paddress2"]   ${data['address2']}
-    Selenium2Library.Input Text    xpath=//input[@id="pcity"]   ${data['city']}
-    Selenium2Library.Input Text    xpath=//input[@id="pstate"]   ${data['state']}
-    Selenium2Library.Input Text    xpath=//input[@id="pzip"]   ${data['zipcode']}
+    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]   ${data['faxnum2']}    
+    Selenium2Library.Input Text    xpath=//input[@id="paddress1"]   ${data['paddress1']}
+    Selenium2Library.Input Text    xpath=//input[@id="paddress2"]   ${data['paddress2']}
+    Selenium2Library.Input Text    xpath=//input[@id="pcity"]   ${data['pcity']}
+    Selenium2Library.Input Text    xpath=//input[@id="pstate"]   ${data['pstate']}
+    Selenium2Library.Input Text    xpath=//input[@id="pzip"]   ${data['pzip']}
      
-     Selenium2Library.Input Text    xpath=//input[@id="maddress1"]   ${data['address1']}
-    Selenium2Library.Input Text    xpath=//input[@id="maddress2"]   ${data['address2']}
-    Selenium2Library.Input Text    xpath=//input[@id="mcity"]   ${data['city']}
-    Selenium2Library.Input Text    xpath=//input[@id="mstate"]   ${data['state']}
-    Selenium2Library.Input Text    xpath=//input[@id="mzip"]   ${data['zipcode']}
+     Selenium2Library.Input Text    xpath=//input[@id="maddress1"]   ${data['maddress1']}
+    Selenium2Library.Input Text    xpath=//input[@id="maddress2"]   ${data['maddress2']}
+    Selenium2Library.Input Text    xpath=//input[@id="mcity"]   ${data['mcity']}
+    Selenium2Library.Input Text    xpath=//input[@id="mstate"]   ${data['mstate']}
+    Selenium2Library.Input Text    xpath=//input[@id="mzip"]   ${data['mzip']}
     
      
      

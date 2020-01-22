@@ -7,9 +7,9 @@ Library   Collections
 ***keywords***
 button rightname
    [arguments]  ${ID}
-   Page Should Contain Button    xpath=//input[@id='Submit'] OR
-   Page Should Contain Button    xpath=//input[@id='Cancel'] OR
-   Page Should Contain Button    xpath=//input[@id='Yes'] OR 
-   Page Should Contain Button    xpath=//input[@id='No'] 
-   Log To Console    ${ID}    
+  
+   ${Button_name} =  Selenium2Library.Get Text   xpath=//*[@class="${ID}"]
+  
+   Log to Console  ${Button_name}
+
    

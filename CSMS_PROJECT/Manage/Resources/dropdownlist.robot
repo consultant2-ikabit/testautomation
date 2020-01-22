@@ -7,9 +7,8 @@ Library    Collections
 
 list default 
    [arguments]  ${listID}
-   Set Selenium Speed  0.7 second 
    ${var} =  Get Value    xpath=//select[@id="${listID}"] 
-   Log To Console  default: ${var}
+   Log To Console  default ${var}
 
 list all
     [arguments]  ${listID}
