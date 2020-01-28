@@ -8,9 +8,8 @@ Resource    ../../Resources/numericalvalue.robot
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
-
-*** Test Cases ***
-    
+#Test
+*** Test Cases ***    
 CustomerAdd
     login
     Go To    localhost:3000/manage
