@@ -27,15 +27,13 @@ numeric noalphabets
     Should Not Be Equal    ${box text}     ${NO_ALPHABET}
     Log to Console     ${ID}   restrict Alphabets 
     
-
 numeric nospecialcharacter
     [arguments]  ${ID}
     ${NO_SPLCHAR} =  Selenium2Library.Input Text   xpath=//input[@id="${ID}"]      )&^%$$
     ${box text}=       Selenium2Library.Get Value    xpath=//input[@id="${ID}"]
     Should Not Be Equal    ${box text}     ${NO_SPLCHAR}
     Log to Console     ${ID}   restrict special characters
-        
- numeric maxlength
+numeric maxlength
      [arguments]  ${ID}
      Selenium2Library.Input Text   xpath=//input[@id="${ID} "]   ${MAX_NUMERIC_LENGTH}
      Log To Console  ${ID} validation for maximum length

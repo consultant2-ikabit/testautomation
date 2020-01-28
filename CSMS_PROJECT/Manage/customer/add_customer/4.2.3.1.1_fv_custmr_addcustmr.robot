@@ -199,7 +199,7 @@ Email MaxLength
 
 
 Email Invalid 
- #Check for Email-'gmail.com'
+#Check for Email-'gmail.com'
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
    
@@ -781,11 +781,7 @@ Primary Address Line1 Maxlength
     Log to Console   "PASS"
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
  ***Test Cases***
- 
-
-
-
-Primary Address Line2 allowSpecial character
+ Primary Address Line2 allowSpecial character
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
@@ -1048,11 +1044,7 @@ Secondary Address Line1 Maxlength
     Log to Console   "PASS"
     Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
  ***Test Cases***
- 
-
-
-
-Secondary Address Line2 allowSpecial character
+ Secondary Address Line2 allowSpecial character
       Reload Page
         Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
@@ -1214,14 +1206,12 @@ Save and Cancel Button
      Element Should Be Enabled  xpath=//*[@class="btn btn-primary btn-round"] 
      Element Should Be Enabled  xpath=//*[@class="btn btn-secondary btn-round"]
     
-    
  Cancel button reset fields
      Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-      
-    ${coemail}     Email   
+     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
     ${First Name}   First Name

@@ -45,10 +45,6 @@ Company Name notNull
     secondary houseaddress
     validation error
 
-    
-
- 
- 
 Email NotNull
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
