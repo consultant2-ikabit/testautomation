@@ -1250,7 +1250,7 @@ Save and Cancel Button
     Textfield Value Should Be   xpath=//input[@id="confirmemail"]       ${EMPTY}
     
     logout and close browser
-
+  
 
 
 
