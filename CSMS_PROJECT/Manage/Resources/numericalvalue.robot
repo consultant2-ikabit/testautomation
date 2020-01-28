@@ -22,8 +22,8 @@ numeric field negative
 
 numeric noalphabets
     [arguments]  ${ID}
-    ${NO_ALPHABET} =  Selenium2Library.Input Text   xpath=//input[@id="${ID}"]    Alphabet123
-    ${box text}=       Selenium2Library.Get Value    xpath=//input[@id="${ID}"]
+    ${NO_ALPHABET} =  Selenium2Library.Input Text   xpath=//input[@id="${ID}"]    Alphabet
+    ${box text}=       Selenium2Library.Get Text    xpath=//input[@id="${ID}"]
     Should Not Be Equal    ${box text}     ${NO_ALPHABET}
     Log to Console     ${ID}   restrict Alphabets 
     
@@ -50,7 +50,7 @@ numeric maximumlength
 numeric space
     [arguments]  ${ID}
     ${SPACE} =  Selenium2Library.Input Text   xpath=//input[@id="${ID}"]    3333 44446  
-    ${box text}=       Selenium2Library.Get Element Attribute    xpath=//input[@id="${ID}"]    attribute=maxlength
+    ${box text}=       Selenium2Library.Get Text   xpath=//input[@id="${ID}"]    
     Should Not Be Equal  ${box text}     ${SPACE}
     Log To Console  ${ID} validation for numeric space
      

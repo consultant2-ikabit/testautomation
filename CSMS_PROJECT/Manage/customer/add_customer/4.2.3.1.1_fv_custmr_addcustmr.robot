@@ -8,10 +8,6 @@ Resource    ../../Resources/numericalvalue.robot
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
-Variables    ../../Resources/data1.py
-Resource    ../../Resources/customerdata.robot
-
-
 
 *** Test Cases ***
     
@@ -23,13 +19,12 @@ CustomerAdd
 
 
 Company Name NotNull
-    
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
     ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
+    Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
     ${Middle Name}  Name
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
@@ -190,7 +185,6 @@ Email NotNull
     primary houseaddress
     secondary houseaddress
     Validation Error
-
 ***Comment***
 Email MaxLength
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
@@ -346,11 +340,8 @@ Email valid
     secondary houseaddress
     update form
 
-
-
 Confirm Email Invalid
-    
- #Check for Confirm Email-'gmail.com'
+    #Check for Confirm Email-'gmail.com'
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     
@@ -386,7 +377,6 @@ Confirm Email Invalid
 
 
 #Check for Confirm Email-gmail@
-
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
    
@@ -421,10 +411,7 @@ Confirm Email Invalid
      primary houseaddress
     secondary houseaddress
     Validation Error
-
-
 #Check for Confirm Email-gmail
-
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
   
@@ -494,8 +481,6 @@ Confirm Email valid
            primary houseaddress
     secondary houseaddress
     update form
-
-
 
 First Name notNull
     Reload Page

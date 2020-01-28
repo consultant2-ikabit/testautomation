@@ -13,22 +13,24 @@ list default
 list all
     [arguments]  ${listID}
    @{items}=    Selenium2Library.Get List Items    xpath=//select[@id="${listID}"]   
-   Log To Console   ${listID} :  
+  
    Log To Console    ${items}    
    Run Keyword And Ignore Error    Log    Listing all items is not possible
 
 list select value 
     [arguments]  ${listID}
     Selenium2Library.Select From List By Index   xpath=//select[@id="${listID}"]    0
-    Log to Console  ${listID} Select list by Index 0
+  
     Run Keyword And Ignore Error    Log    Selecting value from list not working
  
    
-list sort 
+list order 
      [arguments]  ${listID}
-      @{items}=    Selenium2Library.Get List Items    xpath=//select[@id="${listID}"]  
-      Collections.Sort List   ${items}
-      Log to Console   ${listID}  are in alphabetical order                
+      @{items}=   Get List Items   xpath=//select[@id="${listID}"]  
+       @{order_alphbet}=   Collections.Sort List   ${items}
+       Lists Should Be Equal   ${items}    ${order_alphbet}  
+      
+      Log to Console   ${listID}  ${order_alphbet} are in alphabetical order                
       Run Keyword And Ignore Error    Log    list are not in alphabetical order
     
 list edit
