@@ -2,6 +2,7 @@
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
 Library   String    
+Library    Collections
  
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
