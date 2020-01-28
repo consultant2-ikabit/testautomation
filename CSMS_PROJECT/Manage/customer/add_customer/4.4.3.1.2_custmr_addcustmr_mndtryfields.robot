@@ -8,7 +8,7 @@ Resource    ../../Resources/numericalvalue.robot
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
-#Test
+#Testr
 *** Test Cases ***    
 CustomerAdd
     login
