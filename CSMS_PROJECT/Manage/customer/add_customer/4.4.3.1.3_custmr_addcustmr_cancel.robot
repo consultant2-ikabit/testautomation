@@ -9,8 +9,7 @@ Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
 Variables    ../../Resources/data1.py
 Resource    ../../Resources/customerdata.robot
-*** Test Cases ***  
-#
+
 *** Test Cases ***
 
     
