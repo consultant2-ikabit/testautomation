@@ -46,7 +46,7 @@ Company Name NotNull
     validation error
  
 Company Name MaxLength
-    
+    Reload Page
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${Length}=  Get Length    xpath=//input[@id="companyname"]
