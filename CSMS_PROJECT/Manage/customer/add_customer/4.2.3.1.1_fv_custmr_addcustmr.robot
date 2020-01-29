@@ -47,7 +47,7 @@ Company Name NotNull
  
 Company Name MaxLength
     Reload Page
-    
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${Length}=  Get Length    xpath=//input[@id="companyname"]
     ${String}     Generate Random String     ${Length+1}  chars=[LETTERS]
