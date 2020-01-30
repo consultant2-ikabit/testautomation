@@ -10,7 +10,7 @@ Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
 
 *** Test Cases ***
- ############
+ ############@@
 CustomerModify
     login
     Go To    localhost:3000/manage
