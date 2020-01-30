@@ -321,7 +321,8 @@ Secondary Address Line2 allownumbers
     update form
     
 
-Mcity    
+Mcity  
+    Reload Page  
     Reload Page
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     Selenium2Library.Select From List By Index    xpath=//select[@id="selectcustomer"][@class="form-control"]   9
