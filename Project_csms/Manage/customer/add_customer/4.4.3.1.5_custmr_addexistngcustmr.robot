@@ -1,6 +1,6 @@
 ***Settings***
-Library    Selenium2Library   
-  
+Library    Selenium2Library  
+Library    Collections    
 Library    FakerLibrary    locale=en_US
 Library   String    
  
@@ -10,25 +10,25 @@ Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
 
+
 *** Test Cases ***
-  
+
+
+    
 CustomerAdd
     login
     Go To    localhost:3000/manage
     Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
     Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
 
-
-    
- #Add already existing customer with exact company name and different Email ID 
-Add Existing Customer
-       Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-   
+#Email Add already existing customer - using same Email ID 
+Customer Add sameEmailID 
+ 
+  
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${coemail}     Email   
-
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
+    Selenium2Library.Input Text    xpath=//input[@id="email"]       ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
     ${First Name}   First Name
      Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
@@ -50,13 +50,14 @@ Add Existing Customer
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    update form
-     
-  #Enter same company name 
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-    ${coemail}     Email   
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
+    update form 
+    Reload Page
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+   
+    ${Companynm}  Company
+    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}  
+    Selenium2Library.Input Text    xpath=//input[@id="email"]        ${coemail}
+    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]      ${coemail}
     ${First Name}   First Name
      Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
     ${Middle Name}  Name
@@ -77,10 +78,7 @@ Add Existing Customer
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-
-    
-Capture Error message
-     Click Button    xpath=//*[@id="savebtn"] 
+    Click Button    xpath=//*[@id="savebtn"]  
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]    20s
       ${Error_message}=  Get Text     xpath=//div[@id="apifetch-body"][@class="modal-body"]
      Page Should Contain     ${Error_message} 

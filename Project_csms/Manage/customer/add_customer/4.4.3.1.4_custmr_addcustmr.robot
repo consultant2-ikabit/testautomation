@@ -18,8 +18,8 @@ CustomerAdd
     Go To    localhost:3000/manage
     Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
     Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
-    
- #Tests if the add functionality works  and record is added to DB
+   
+#Tests if the add functionality works  and record is added to DB
        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
    
     ${Companynm}  Company

@@ -578,7 +578,7 @@ Primary Number Type validation
     list default    pnumbertype
     list all     pnumbertype
     list select value    pnumbertype
-    list multiple selection    pnumbertype
+
 
 Primary Country Code validation
     Reload Page
@@ -586,7 +586,7 @@ Primary Country Code validation
     list default    pcountrycode
     list all     pcountrycode
     list select value    pcountrycode
-    list multiple selection    pcountrycode
+
 
 Primary Number NULL validation
     Reload Page
@@ -634,14 +634,13 @@ Secondary Number Type validation
     list default    pnumbertype
     list all     pnumbertype
     list select value    pnumbertype
-    list multiple selection    pnumbertype
+
 
 Secoundary Country Code validation
     
     list default    pcountrycode
     list all     pcountrycode
-    list select value    pcountrycode
-    list multiple selection    pcountrycode
+
     
 
 
@@ -658,7 +657,7 @@ Country Code validation
     list default    countrycode
     list all     countrycode
     list select value    countrycode
-    list multiple selection    countrycode
+  
     
 Faxnumber1 
    Reload Page
@@ -676,7 +675,7 @@ Faxcountry Code validation
     list default    faxcountrycode
     list all     faxcountrycode
     list select value    faxcountrycode
-    list multiple selection    faxcountrycode
+    
     
 Faxnumber2 
     Reload Page
@@ -766,7 +765,7 @@ Primary Address Line1 allownumbers
     update form
 #Add Length Primary Address 
 
- Primary Address Line2 allowSpecial character
+Primary Address Line2 allowSpecial character
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${Companynm}  Company
@@ -850,18 +849,10 @@ Primary Address Line2 allownumbers
     Secondary Address
     update form
   
-***Comment***   
+# Primary Address Line2 Maxlength
+  
 
-Primary Address Line2 Maxlength
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data   ${customer7}
-    Selenium2Library.Click Button   xpath=//*[@id="submit"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
-    Page Should Contain  Updating Data
-    Log to Console   "PASS"
-    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
 
-***Test Cases***
 
 Pcity    
     Reload Page
@@ -1009,11 +1000,9 @@ Secondary Address Line1 allownumbers
 
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
     update form
-
-
 # Secondary Address Line1 Maxlength
   
- Secondary Address Line2 allowSpecial character
+Secondary Address Line2 allowSpecial character
       Reload Page
         Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
@@ -1127,7 +1116,7 @@ Mzipcode allownumbers
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
     Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]
-      Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="savebtn"]   10s
+   
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -1156,7 +1145,7 @@ Save and Cancel Button
      Element Should Be Enabled  xpath=//*[@class="btn btn-primary btn-round"] 
      Element Should Be Enabled  xpath=//*[@class="btn btn-secondary btn-round"]
     
- Cancel button reset fields
+Cancel button reset fields
      Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${Companynm}  Company
