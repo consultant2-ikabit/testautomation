@@ -16,7 +16,7 @@ Resource    ../../Resources/button.robot
 
 View customer inactive with no existing customer name
     login
-    open link  customer  Add 
+    open link  contractor  Add 
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -29,7 +29,7 @@ View customer inactive with no existing customer name
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]
     ${Phone Number}     Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -39,44 +39,44 @@ View customer inactive with no existing customer name
     secondary houseaddress
     updating data   
 
-    open link   customer  Delete 
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]       
-     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    open link   contractor  Delete 
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="deletebtn"]       
+     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     ${Get_index}=  Get Index From List     ${List_items}      ${Companynm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
     Set Global Variable   ${Index_string}  
-    Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
-    Selenium2Library.Click Button    xpath=//*[@id="submit"]
+    Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string}
+    Selenium2Library.Click Button    xpath=//*[@id="deletebtn"]
     Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="failDeleteDismiss"]
     Selenium2Library.Click Button   xpath=//*[@id="failDeleteDismiss"]   
    
 
-#View deleted customer
-    open link  customer  View
+#View deleted contractor
+    open link  contractor  View
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]  
-     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"] 
+     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"] 
     List Should Not Contain Value    ${List_items}    ${Companynm_lowercase}  
-    Selenium2Library.Select Checkbox    xpath=//*[@id="customer"]
-    Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    Selenium2Library.Select Checkbox    xpath=//*[@id="contractor"]
+    Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     ${Get_index}=  Get Index From List     ${List_items}      ${Companynm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
     Set Global Variable   ${Index_string}  
-    Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
+    Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string}
      List Should Contain Value  ${List_items}   ${Companynm_lowercase} 
 
-Inactive form validation    
-     open link   customer  Delete
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]
-    Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0   
-    list default    selectcustomer
-     list multiple selection    selectcustomer
+Inactive contractor form validation    
+     open link   contractor  Delete
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="deletebtn"]    30s
+    Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0   
+    list default    selectsupplier
+     list multiple selection    selectsupplier
      
-     list select value  selectcustomer
-     button active    submit
+     list select value  selectsupplier
+     button active    deletebtn
 
      logout and close browser

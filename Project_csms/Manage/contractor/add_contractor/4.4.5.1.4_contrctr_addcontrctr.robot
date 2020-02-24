@@ -3,7 +3,8 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library   Collections 
-Test Teardown        Run Keyword And Continue On Failure    Log    Fail  
+
+Test Teardown    Run Keyword If Test Failed     Close Browser 
 Resource    ../../Resources/genericfunctions.robot
 
 
@@ -11,9 +12,9 @@ Resource    ../../Resources/genericfunctions.robot
 *** Test Cases ***
 
     
-CustomerAdd
+ContractorAdd
     login
-    open link    customer    Add
+    open link    contractor    Add
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -25,10 +26,10 @@ CustomerAdd
     secondary houseaddress
     updating data 
 #Tests if the add functionality works  and record is added to DB  
-    open link    customer    View
+    open link    contractor    View
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="viewbtn"]  30s
-    Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     List Should Contain Value    ${List_items}     ${Companynm_lowercase}     
 

@@ -3,44 +3,35 @@ Library    Selenium2Library
 Library    Collections    
 Library    FakerLibrary    locale=en_US
 Library   String    
- 
+
+     
+Test Teardown        Run Keyword And Continue On Failure    Log    Fail
+
 Resource    ../../Resources/dropdownlist.robot 
-Resource    ../../Resources/numericalvalue.robot 
+
 Resource    ../../Resources/genericfunctions.robot
-Resource    ../../Resources/textfield.robot
-Resource    ../../Resources/button.robot
+
 
 
 *** Test Cases ***
-
-
     
 CustomerAdd
     login
-    Go To    localhost:3000/manage
-    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
-    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
+    open link  customer  Add
 
 #Email Add already existing customer - using same Email ID 
 Customer Add sameEmailID 
  
-  
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]       ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -50,21 +41,15 @@ Customer Add sameEmailID
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    update form 
+    updating data
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
    
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}  
     Selenium2Library.Input Text    xpath=//input[@id="email"]        ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]      ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields  
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -86,5 +71,5 @@ Customer Add sameEmailID
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
+    logout and close browser
 
-    logout and close browser 

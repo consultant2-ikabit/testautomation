@@ -1,78 +1,26 @@
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
-Library   String  
+Library   String   
+Library   Collections    
+ 
 
-Variables    ../../Resources/data1.py
+Test Teardown    Run Keyword If Test Failed     Close Browser 
 Resource    ../../Resources/genericfunctions.robot
+
+
+
 *** Test Cases ***
-
-
-
-
-    
-CustomerAdd
+View inactive customer with no existing customer
     login
-    Go To    localhost:3000/manage
-    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
-    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
-
-
-Company Name NotNull
-    
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-     ${coemail}     Email   
-    log to console   ${coemail}
-    ${Company Email}=  Random Number    digits=3
-    
-
-Email NotNull 
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data  ${customer5}
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]     20s
-    Page Should Contain  Validation Error
-    
-    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
- 
-
-
-ConfirmEmail NotNull 
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data  ${customer5}
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]     20s
-    Page Should Contain  Validation Error
-    
-    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
- 
-
-First Name NotNull
-    
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data  ${customer5}
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]     20s
-    Page Should Contain  Validation Error
-    
-    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
-    
-Last Name NotNull
-    
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-    Initial data  ${customer5}
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]     20s
-    Page Should Contain  Validation Error
-    
-    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
+    open link  customer   View
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]  
+     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"] 
+    Selenium2Library.Select Checkbox    xpath=//*[@id="customer"]
+    Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"]  
+     List Should Not Contain Value    ${List_items}   CUSTOMER   
+     logout and close browser
 
 

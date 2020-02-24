@@ -6,18 +6,18 @@ Library   String
  
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
-Test Teardown      Close Browser
+Test Teardown    Run Keyword If Test Failed     Close Browser 
 *** Test Cases ***
   
 
 
 
     
-#Add already existing customer with exact company name and different Email ID 
-Add Existing Customer
+#Add already existing contractor with exact company name and different Email ID 
+Add Existing Contractor
     
     login
-    open link  customer   Add
+    open link  contractor   Add
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -31,7 +31,7 @@ Add Existing Customer
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]  
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -59,7 +59,7 @@ Add Existing Customer
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]  
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -76,7 +76,7 @@ Add Existing Customer
    
     
 #  Capture Error message
-     Click Button    xpath=//*[@id="savebtn"] 
+     Click Button    xpath=//*[@id="submit"] 
   
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]    20s
       ${Error_message}=  Get Text     xpath=//div[@id="apifetch-body"][@class="modal-body"]
@@ -85,5 +85,6 @@ Add Existing Customer
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
+    logout and close browser
 
     
