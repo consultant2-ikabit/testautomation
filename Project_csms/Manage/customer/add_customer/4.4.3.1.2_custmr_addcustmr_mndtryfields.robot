@@ -1,41 +1,30 @@
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
-Library   String    
  
-Resource    ../../Resources/dropdownlist.robot 
-Resource    ../../Resources/numericalvalue.robot 
+
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
-Resource    ../../Resources/button.robot
+
 
 
 
 *** Test Cases ***    
 CustomerAdd
     login
-    Go To    localhost:3000/manage
-    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
-    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
+    open link   customer   Add
    
    
 
 Company Name notNull
-       Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -49,7 +38,7 @@ Company Name notNull
 
 Email NotNull
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
   
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -57,17 +46,10 @@ Email NotNull
     ${coemail}     Email   
 
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -86,8 +68,7 @@ Confirm Email Notnull
     
 #Check for Confirm Email-'gmail.com'
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-    
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
   
@@ -95,17 +76,11 @@ Confirm Email Notnull
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]    "" 
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
+
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -122,8 +97,7 @@ Confirm Email Notnull
 First Name notNull
     Reload Page
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
+      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
         ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
@@ -149,17 +123,16 @@ First Name notNull
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-            primary houseaddress
+    primary houseaddress
     secondary houseaddress
     Validation Error
 
 
 Last Name notNull
-        Reload Page
+    Reload Page
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-        ${Companynm}  Company
+      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
+    ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
@@ -184,7 +157,7 @@ Last Name notNull
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-            primary houseaddress
+    primary houseaddress
     secondary houseaddress
     Validation Error
     
@@ -193,9 +166,8 @@ Last Name notNull
 Primary Number NULL validation
     Reload Page
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-        ${Companynm}  Company
+      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
+    ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
@@ -227,21 +199,15 @@ Primary Number NULL validation
 
 
 Cancel button reset fields
-     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Reload Page
+      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
       
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number

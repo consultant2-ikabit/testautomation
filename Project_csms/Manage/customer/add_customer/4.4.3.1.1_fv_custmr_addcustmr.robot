@@ -1,7 +1,6 @@
 ***Settings***
 Library    Selenium2Library     
 Library    FakerLibrary    locale=en_US
-
 Library   String
 
  
@@ -10,14 +9,14 @@ Resource    ../../Resources/numericalvalue.robot
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
+Test Teardown        Run Keyword And Continue On Failure    Log    FAIL
 ##
 *** Test Cases ***
     
-CustomerAdd
+Open customer add form
     login
-    Go To    localhost:3000/manage
-    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
-    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
+    
+    open link    customer    Add
 
 
 Company Name NotNull
@@ -25,17 +24,10 @@ Company Name NotNull
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-    Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -59,17 +51,9 @@ Company Name MaxLength
  
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields  
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -81,7 +65,6 @@ Company Name MaxLength
     secondary houseaddress
     validation error
   
-***Test Cases***
 
 Company Name Allow special character
     
@@ -90,25 +73,13 @@ Company Name Allow special character
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
     ${String}     Generate Random String     4  chars=[NUMBERS]    
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]         ()%#$!@${String}
- 
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
- 
-  
     ${coemail}     Email   
-  
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -118,7 +89,8 @@ Company Name Allow special character
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    update form
+    updating data
+
 Company Name allow numeric value
     Reload Page
     
@@ -132,17 +104,9 @@ Company Name allow numeric value
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -152,30 +116,19 @@ Company Name allow numeric value
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    update form
-    
+    updating data
+
 
 Email NotNull
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-  
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-  
     ${coemail}     Email   
-
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -200,23 +153,13 @@ Email Invalid
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
- 
     ${coemail}     Email   
-   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     "gmail.com"
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
    
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -240,17 +183,9 @@ Email Invalid
  
     Selenium2Library.Input Text    xpath=//input[@id="email"]     "gmail@"
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields  
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -278,17 +213,10 @@ Email Invalid
   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     "gmail"
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
+
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -312,17 +240,9 @@ Email valid
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+   mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -332,7 +252,7 @@ Email valid
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    update form
+    updating data
 
 Confirm Email Invalid
     #Check for Confirm Email-'gmail.com'
@@ -346,17 +266,9 @@ Confirm Email Invalid
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]    "gmail.com" 
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -384,17 +296,9 @@ Confirm Email Invalid
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]      ${coemail} 
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]    "gmail@"
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -419,17 +323,9 @@ Confirm Email Invalid
     
     Selenium2Library.Input Text    xpath=//input[@id="email"]      ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]    "gmail"
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -454,17 +350,9 @@ Confirm Email valid
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields  
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -474,7 +362,7 @@ Confirm Email valid
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
            primary houseaddress
     secondary houseaddress
-    update form
+    updating data
 
 First Name notNull
     Reload Page
@@ -699,17 +587,9 @@ Primary Address Line1 allowSpecial character
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -719,14 +599,14 @@ Primary Address Line1 allowSpecial character
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     
     ${Address1}   Street Address     
-    Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    $&^&^* ()${Address1}
+    Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    $&^&^* ()
     Selenium2Library.Input Text    xpath=//input[@id="paddress2"]      ${Address2}
     Selenium2Library.Input Text    xpath=//input[@id="pcity"]     ${City}
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
     secondary houseaddress
-    update form
-    
+    updating data
+
 Primary Address Line1 allownumbers
         Reload Page
         Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
@@ -737,17 +617,9 @@ Primary Address Line1 allownumbers
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode 
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -761,8 +633,8 @@ Primary Address Line1 allownumbers
     Selenium2Library.Input Text    xpath=//input[@id="pcity"]     ${City}
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
      Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
-    secondary houseaddress
-    update form
+    updating data
+
 #Add Length Primary Address 
 
 Primary Address Line2 allowSpecial character
@@ -775,38 +647,24 @@ Primary Address Line2 allowSpecial character
    
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-    Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-    ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode  
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     list select value   countrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    
-    ${Address2}   Street Address     
+    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}   
     Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    ${Address1}
- 
- 
     Selenium2Library.Input Text    xpath=//input[@id="paddress2"]      $%&&&^$$
-  
     Selenium2Library.Input Text    xpath=//input[@id="pcity"]     ${City}
-  
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
-
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
     secondary houseaddress
-    update form
+    updating data
+     Run Keyword And Ignore Error    Log     Fail
 Primary Address Line2 allownumbers
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
@@ -817,37 +675,23 @@ Primary Address Line2 allownumbers
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     list select value   countrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    
-    ${Address2}   Street Address     
+    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}   
     Selenium2Library.Input Text    xpath=//input[@id="paddress1"]     ${Address1}
-
     Selenium2Library.Input Text    xpath=//input[@id="paddress2"]      48477
-
     Selenium2Library.Input Text    xpath=//input[@id="pcity"]     ${City}
-
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
-  
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
-    Secondary Address
-    update form
+    updating data
+
   
 # Primary Address Line2 Maxlength
   
@@ -873,33 +717,24 @@ Pstate
 
 Pzipcode nospecial characters
     Reload Page
-     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-     text splchar not allowed  pzip
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    text splchar not allowed  pzip
    
 
 
 Pzipcode allownumbers
-      Reload Page
-        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-       ${Companynm}  Company
+    Reload Page
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
  
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode  
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -915,12 +750,12 @@ Pzipcode allownumbers
    
     ${Zipcode}   Random Number    digits=5
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
-     secondary houseaddress
-     update form
-   
+    secondary houseaddress
+    updating data
+
 Secondary Address Line1 allowSpecial character
-     Reload Page
-        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Reload Page
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
 
     ${Companynm}  Company
@@ -930,17 +765,9 @@ Secondary Address Line1 allowSpecial character
    
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode   
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -957,30 +784,22 @@ Secondary Address Line1 allowSpecial character
     Selenium2Library.Input Text    xpath=//input[@id="mstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
   
-    update form
-    
+    updating data
+
 Secondary Address Line1 allownumbers
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
-        ${Companynm}  Company
+    ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
 
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode  
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -989,7 +808,7 @@ Secondary Address Line1 allownumbers
     list select value  faxcountrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
         
-   primary houseaddress
+    primary houseaddress
     Selenium2Library.Input Text      xpath=//input[@id="maddress1"]     4848448
 
     Selenium2Library.Input Text    xpath=//input[@id="maddress2"]      ${Address2}
@@ -999,31 +818,24 @@ Secondary Address Line1 allownumbers
     Selenium2Library.Input Text    xpath=//input[@id="mstate"]     ${State}
 
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
-    update form
+    updating data
+
 # Secondary Address Line1 Maxlength
   
 Secondary Address Line2 allowSpecial character
-      Reload Page
-        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+    Reload Page
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
-        ${Companynm}  Company
+    ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
     list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -1037,10 +849,11 @@ Secondary Address Line2 allowSpecial character
     Selenium2Library.Input Text    xpath=//input[@id="mcity"]     ${City}
     Selenium2Library.Input Text    xpath=//input[@id="mstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
-    update form
+    updating data
+
     
 Secondary Address Line2 allownumbers
-          Reload Page
+    Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
 
     ${Companynm}  Company
@@ -1049,17 +862,9 @@ Secondary Address Line2 allownumbers
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode  
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
@@ -1074,7 +879,7 @@ Secondary Address Line2 allownumbers
     Selenium2Library.Input Text    xpath=//input[@id="mcity"]     ${City}
     Selenium2Library.Input Text    xpath=//input[@id="mstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
-    update form
+    updating data
 
 
 Mcity    
@@ -1109,13 +914,7 @@ Mzipcode allownumbers
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]
+    mandatory fields
    
     list select value    pnumbertype
     list select value    pcountrycode
@@ -1136,8 +935,8 @@ Mzipcode allownumbers
    
     ${Zipcode}   Random Number    digits=5
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
-    update form
-    
+    updating data
+ 
 Save and Cancel Button   
      Reload Page
      Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
@@ -1153,17 +952,9 @@ Cancel button reset fields
      ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    mandatory fields 
     list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    list select value    pcountrycode 
     list select value    snumbertype
     list select value    scountrycode
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}

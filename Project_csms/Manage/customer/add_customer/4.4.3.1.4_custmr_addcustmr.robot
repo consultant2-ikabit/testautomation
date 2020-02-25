@@ -28,7 +28,7 @@ CustomerAdd
     open link    customer    View
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="viewbtn"]  30s
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     List Should Contain Value    ${List_items}     ${Companynm_lowercase}     
 
