@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Test Teardown    Run Keyword And Continue On Failure    Log   Fail
 
 
 Resource    ../../Resources/genericfunctions.robot

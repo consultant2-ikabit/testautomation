@@ -3,8 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
 
@@ -15,7 +14,7 @@ View inactive customer
 # Add a customer
 
     open link    customer     Add
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     50s
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${company_name}      Selenium2Library.Get Text    xpath=//input[@id="companyname"]
@@ -52,12 +51,11 @@ View inactive customer
     ${Pzip}   Zipcode
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
      ${Zip_view}   Selenium2Library.Get Text        xpath=//input[@id="pzip"]   
-  
     updating data   
+    
 # Delete the  customer  
      open link    customer    Delete
-    
-     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]  
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]    100s
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"]  
     ${companynm_lowercase}=   Convert To Lowercase    ${Companynm}
@@ -71,14 +69,11 @@ View inactive customer
     
 #View the customer
     open link  customer   View 
-      Selenium2Library.Page Should Contain Element    xpath=//*[@id="viewbtn"]
-   
+    Selenium2Library.Page Should Contain Element    xpath=//*[@id="viewbtn"]    100s
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
     Selenium2Library.Click Button  xpath=//*[@id="viewbtn"]    
-     
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    
     Element Text Should Be   xpath=//input[@id="companyname"]      ${company_name}
     Element Text Should Be   xpath=//input[@id="email"]    ${co_email} 
     Element Text Should Be   xpath=//input[@id="fname"]   ${First_name} 
@@ -91,8 +86,6 @@ View inactive customer
     Element Text Should Be  xpath=//input[@id="paddress1"]    ${Address1_view} 
     Element Text Should Be  xpath=//input[@id="paddress2"]    ${Address2_view} 
     Element Text Should Be  xpath=//input[@id="pcity"]    ${City_view}
-     Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
-      Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
+    Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
+    Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
     
-   
-     logout and close browser 

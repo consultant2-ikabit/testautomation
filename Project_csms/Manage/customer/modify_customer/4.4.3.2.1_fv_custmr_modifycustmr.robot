@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US  
 Library   String   
 Library    Collections    
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Suite Teardown    Close Browser
  
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
@@ -17,13 +17,17 @@ Add and View customer
     login
     add and search customer
     Selenium2Library.Click Button    xpath=//*[@id="viewbtn"]
-    Selenium2Library.Page Should Contain Element  xpath=//*[@id="viewbtn"]   
+    Selenium2Library.Page Should Contain Element  xpath=//*[@id="viewbtn"]   100s
+    
 Firstname Null validation
-   
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
     Selenium2Library.Input Text    xpath=//input[@id="fname"]    ${EMPTY}
-    validation error modify form
-    Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]  20s
+    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  20s
+    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Page Should Contain    Validation Error
+    Selenium2Library.Click Button   xpath=//*[@id="validationMendatoryDismiss"][@class="btn btn-round btn-primary"]
+
     
 Last name Null validation
     Reload Page
@@ -33,14 +37,20 @@ Last name Null validation
     Selenium2Library.Wait Until Element Is Visible      xpath=//select[@id="selectcustomer"][@class="form-control"]    40s
     Selenium2Library.Click Button    xpath=//*[@id="viewbtn"]   
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   40s 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   60s 
     Selenium2Library.Input Text    xpath=//input[@id="lname"]    ${EMPTY}
-    validation error modify form
+    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  20s
+    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Page Should Contain    Validation Error
+    Selenium2Library.Click Button   xpath=//*[@id="validationMendatoryDismiss"][@class="btn btn-round btn-primary"]
+
      
 
     
 
 Primary Address Line1 allowSpecial character
+    Scroll Element Into View    xpath=//*[@id="update"] 
     Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]   
     Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    $&^&^* ()${
     updating data modify form
@@ -152,7 +162,7 @@ Secoundary Country Code validation
     
 Secondary Number
     Scroll Element Into View   xpath=//*[@id="update"]   
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]   20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]   40s
     numeric noalphabets   snumber
     numeric nospecialcharacter   snumber
     numeric space   snumber
@@ -195,7 +205,7 @@ Pcity
     Click Button    xpath=//*[@id="viewbtn"]
     Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="viewbtn"]   20s
     Scroll Element Into View     xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]    20s
+    
     text splchar not allowed  pcity
     text number not allowed  pcity
     
@@ -213,7 +223,7 @@ Pzipcode nospecial characters
 Mcity
     Reload Page
     Scroll Element Into View     xpath=//*[@id="update"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]    20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]    40s
     text splchar not allowed  mcity
     text number not allowed  mcity
     
@@ -229,8 +239,7 @@ Mzipcode nospecial characters
 Button
      button rightname    update
      button active    update
-     logout and close browser
-
+  
 
 
 

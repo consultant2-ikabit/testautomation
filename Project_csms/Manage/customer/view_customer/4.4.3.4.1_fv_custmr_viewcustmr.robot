@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String    
 Library    Collections    
-Test Teardown    Run Keyword If Test Failed     Close Browser   
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/button.robot
@@ -15,7 +15,7 @@ Resource    ../../Resources/button.robot
 view customer form validation
     login
     open link   customer   View  
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]  
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]    100s
     
     list default    selectcustomer
     list scrollbar  selectcustomer
@@ -31,14 +31,8 @@ view customer form validation
   
       Selenium2Library.Select From List By Index    xpath=//select[@id="selectcustomer"][@class="form-control"]    5  
      @{List_inactive}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]   
-      
-     Should Not Be Equal      ${List_items}     ${List_inactive}   
+      Should Not Be Equal      ${List_items}     ${List_inactive}   
    
-     
-  
-     logout and close browser
-    
-
 
 
 

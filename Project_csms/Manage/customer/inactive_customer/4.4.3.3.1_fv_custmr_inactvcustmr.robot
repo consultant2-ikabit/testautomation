@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String   
 Library   Collections    
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -17,7 +17,7 @@ Resource    ../../Resources/button.robot
 View customer inactive with no existing customer name
     login
     open link  customer  Add 
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]      50s
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${coemail}     Email   
@@ -40,7 +40,7 @@ View customer inactive with no existing customer name
     updating data   
 
     open link   customer  Delete 
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]       
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]        100s
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
@@ -55,7 +55,7 @@ View customer inactive with no existing customer name
 
 #View deleted customer
     open link  customer  View
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]  
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]     100s
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"] 
     List Should Not Contain Value    ${List_items}    ${Companynm_lowercase}  
@@ -71,12 +71,9 @@ View customer inactive with no existing customer name
 
 Inactive form validation    
      open link   customer  Delete
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]   100s
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0   
     list default    selectcustomer
-     list multiple selection    selectcustomer
-     
-     list select value  selectcustomer
-     button active    submit
-
-     logout and close browser
+    list multiple selection    selectcustomer
+    list select value  selectcustomer
+    button active    submit

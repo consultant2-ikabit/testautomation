@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Suite Teardown    Close Browser
 
 
 Resource    ../../Resources/genericfunctions.robot
@@ -16,7 +16,7 @@ view active customer
 # Add a customer
 
    open link   customer  Add  
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]      50s
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${Company_name}      Selenium2Library.Get Text    xpath=//input[@id="companyname"]
@@ -56,7 +56,7 @@ view active customer
     updating data   
 #View the customer
     open link  customer  View 
-    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="viewbtn"]   
+    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="viewbtn"]     100s
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
@@ -79,11 +79,9 @@ view active customer
     Element Text Should Be  xpath=//input[@id="paddress1"]    ${Address1_view} 
     Element Text Should Be  xpath=//input[@id="paddress2"]    ${Address2_view} 
     Element Text Should Be  xpath=//input[@id="pcity"]    ${City_view}
-     Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
-      Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
+    Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
+    Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
     
-   
-     logout and close browser    
     
      
      

@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
@@ -14,7 +14,7 @@ view inactive customer
      login
 # Add a customer
     open link   customer  Add  
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     50s
     ${Companynm}  Company
      Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     ${Company_name}      Selenium2Library.Get Text    xpath=//input[@id="companyname"]
@@ -89,9 +89,6 @@ view inactive customer
     Element Text Should Be  xpath=//input[@id="paddress1"]    ${Address1_view} 
     Element Text Should Be  xpath=//input[@id="paddress2"]    ${Address2_view} 
     Element Text Should Be  xpath=//input[@id="pcity"]    ${City_view}
-     Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
-      Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
-    
-   
-     logout and close browser    
+    Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
+    Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
    

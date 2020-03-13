@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String 
 Library   Collections    
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 *** Test Cases ***
@@ -12,11 +12,11 @@ Add and view customer
     login
     add and search customer
     Click Button    xpath=//*[@id="viewbtn"]
-    Selenium2Library.Wait Until Element Is Visible       xpath=//*[@id="viewbtn"]   30s
+    Selenium2Library.Wait Until Element Is Visible       xpath=//*[@id="viewbtn"]   50s
     
 Modify Details
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   20s 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   50s 
     ${First_name_modify}   First Name
     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First_name_modify} 
     ${First_name}=   Selenium2Library.Get Text    xpath=//input[@id="fname"]   
@@ -55,14 +55,14 @@ Modify Details
       Set Global Variable   ${Index_string} 
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
     Click Button    xpath=//*[@id="viewbtn"]
-    Selenium2Library.Wait Until Element Is Visible       xpath=//*[@id="viewbtn"]   20s
+    Selenium2Library.Wait Until Element Is Visible       xpath=//*[@id="viewbtn"]   40s
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   20s 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   40s 
     Element Text Should Be   xpath=//input[@id="fname"]   ${First_name} 
     Element Text Should Be  xpath=//input[@id="lname"]   ${Last_name}   
     Element Text Should Be   xpath=//input[@id="snumber"]    ${Secondary_number}
     Scroll Element Into View    xpath=//*[@id="update"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]   20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]   40s
     Element Text Should Be   xpath=//input[@id="faxnumber1"]  ${Secondary_number}
     Element Text Should Be  xpath=//input[@id="faxnumber2"]  ${Secondary_number}
     Element Text Should Be   xpath=//input[@id="paddress1"]     ${Address1_modified}
@@ -76,4 +76,3 @@ Modify Details
     Element Text Should Be   xpath=//input[@id="mstate"]     ${State_modified}
     Element Text Should Be   xpath=//input[@id="mzip"]     ${Zip_modified}
     
-    logout and close browser
