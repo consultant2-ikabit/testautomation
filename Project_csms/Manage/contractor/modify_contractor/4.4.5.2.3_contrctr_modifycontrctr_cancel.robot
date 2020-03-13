@@ -4,15 +4,15 @@ Library    FakerLibrary    locale=en_US
 Library   String  
 Library    Collections
 
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Test Teardown        Run Keyword And Continue On Failure    Log    FAIL
 
 Resource    ../../Resources/genericfunctions.robot
 *** Test Cases ***
 
    
-Add and view customer
+Add and view contractor
     login 
-    add and search customer
+    add and search contractor
     Selenium2Library.Click Button    xpath=//*[@id="viewbtn"]
     Selenium2Library.Page Should Contain Element  xpath=//*[@id="viewbtn"]
 Modify Details
@@ -28,8 +28,8 @@ Modify Details
    ${Last_name_modify}   Last Name
    Log to Console   ${Last_name_modify}
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last_name_modify} 
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="update"]
-    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]      30s 
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]
+    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="submit"]      30s 
     ${Secondary_number}=   Selenium2Library.Get Text    xpath=//input[@id="snumber"]   
     ${Fax1_number}=   Selenium2Library.Get Text    xpath=//input[@id="faxnumber1"]   
     ${Fax2_number}=   Selenium2Library.Get Text   xpath=//input[@id="faxnumber2"]   
@@ -50,8 +50,8 @@ Modify Details
      Scroll Element Into View   xpath=//*[@id="viewbtn"]  
      Reload Page
       Set Global Variable   ${Index_string} 
-     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0 
-     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
+     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0 
+     Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string}
       Click Button    xpath=//*[@id="viewbtn"]
      
       Scroll Element Into View    xpath=//input[@id="snumber"] 
@@ -60,8 +60,8 @@ Modify Details
       Element Text Should Be    xpath=//input[@id="snumber"]      ${Secondary_number}  
       Element Text Should Be    xpath=//input[@id="faxnumber1"]   ${Fax1_number}  
       Element Text Should Be    xpath=//input[@id="faxnumber2"]    ${Fax2_number}  
-      Scroll Element Into View    xpath=//*[@id="update"] 
-      Selenium2Library.Page Should Contain Element    xpath=//*[@id="update"]    
+      Scroll Element Into View    xpath=//*[@id="submit"] 
+      Selenium2Library.Page Should Contain Element    xpath=//*[@id="submit"]    
       Element Text Should Be    xpath=//input[@id="maddress1"]    ${Secondaryaddress1}
       Element Text Should Be    xpath=//input[@id="maddress2"]    ${Secondaryaddress2}  
       Element Text Should Be    xpath=//input[@id="mcity"]    ${Mcity}  
