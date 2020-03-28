@@ -1,8 +1,8 @@
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
-Library   String    
- 
+  
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -12,264 +12,170 @@ Resource    ../../Resources/textfield.robot
 
 
 *** Test Cases ***    
-CustomerAdd
+Open equipment add form
     login
-    Go To    localhost:3000/manage
-    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
-    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]  
-   
-   
-
-Company Name notNull
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-    ${coemail}     Email   
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress 
-    secondary houseaddress
-    validation error
-
-Email NotNull
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-  
-    ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-  
-    ${coemail}     Email   
-
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     
-    primary houseaddress
-    secondary houseaddress
-    Validation Error
-
-
-
-Confirm Email Notnull
+    Selenium2Library.Click Element    xpath=//*[@href="/manage"]
+    Selenium2Library.Click Element    xpath=//*[@href="/manage/equipment"]   
+    Selenium2Library.Click Element   xpath=//*[@href="/manage/equipmentAdd"]  
     
-#Check for Confirm Email-'gmail.com'
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-    
-    ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-  
-    ${coemail}     Email   
-
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]    "" 
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    secondary houseaddress
-    Validation Error
-
- 
-
-First Name notNull
-    Reload Page
-    
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-        ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
-    ${coemail}     Email   
- 
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ""
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    secondary houseaddress
-    Validation Error
-
-
-Last Name notNull
-    Reload Page
-    
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-    ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
-    ${coemail}     Email   
-
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]     ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ""
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    secondary houseaddress
-    Validation Error
-    
-
-
-Primary Number NULL validation
-    Reload Page
-    
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-
-    ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
-    ${coemail}     Email   
- 
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ""
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    secondary houseaddress
-    Validation Error
- 
-
-
-Cancel button reset fields
-    Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-    ${Companynm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
+Equipment Null validation
+      Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="equipmentTypes"]     10s
+      ${equipmentnumber}    Random Digit
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Number
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+      ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue} 
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
       
-    ${coemail}     Email   
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    ${First Name}   First Name
-     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
-    ${Middle Name}  Name
-    Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
-     ${Last Name}   Last Name
-    Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    Selenium2Library.Input Text      xpath=//input[@id="maddress1"]      ${Address1}
-    Selenium2Library.Input Text    xpath=//input[@id="maddress2"]      ${Address2}
-    Selenium2Library.Input Text    xpath=//input[@id="mcity"]     ${City}
-    Selenium2Library.Input Text    xpath=//input[@id="mstate"]     ${State}
-   
-    ${Zipcode}   Random Number    digits=5
-    Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
-    Click Button    xpath=//*[@class="btn btn-secondary btn-round"]   
-    
-    Scroll Element Into View    xpath=//input[@id="companyname"]   
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
-    Textfield Value Should Be     xpath=//input[@id="companyname"]    ${EMPTY}
-    Textfield Value Should Be   xpath=//input[@id="email"]        ${EMPTY}
-    
-    Textfield Value Should Be   xpath=//input[@id="confirmemail"]       ${EMPTY}
-    
-    logout and close browser
+Equipment number Null Validation
+      Reload Page 
+      Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="equipmentTypes"]     10s
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2  
+      ${equipmentdesc}   Random Number
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+        ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+      ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue}
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
+      
+License Plate Null validation
+        Reload Page 
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2
+      ${equipmentnumber}    Random Number
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Letters    length=10
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+       ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue}
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
+      
+Year Null validation
+        Reload Page 
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2
+      ${equipmentnumber}    Random Number
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Letters    length=10
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+       ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue}
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
+      
+Vehicle make Null validation
+       Reload Page 
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2
+      ${equipmentnumber}    Random Number
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Letters    length=10
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}   
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+       ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue}
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
+      
+
+Vehicle Model Null Validation
+       Reload Page 
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2
+      ${equipmentnumber}    Random Number
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Letters    length=10
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+       ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vin"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="currentvehiclevalue"]    ${Vehiclevalue}
+      Select From List By Index    xpath=//select[@id="equipmentownership"]     1
+      validation error
+      
+Equipment ownership Null validation
+       Reload Page 
+        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="equipmentTypes"]     10s
+      Select From List By Index    xpath=//*[@id="equipmentTypes"]       2
+      ${equipmentnumber}    Random Number
+      Input Text    xpath=//*[@id="equipmentnumber"]    ${equipmentnumber}     
+      ${equipmentdesc}   Random Letters    length=10
+       Input Text    xpath=//*[@id="equipmentdesc"]    ${equipmentdesc}
+      ${licenseplate}    Random Number 
+      Input Text    xpath=//*[@id="licenseplate"]    ${licenseplate}
+      ${year}            Year
+        Input Text    xpath=//*[@id="vehicleyear"]    ${year}
+      ${vehiclemake}     Random Number    
+       Input Text    xpath=//*[@id="vehiclemake"]    ${vehiclemake}     
+      ${vehiclemodel}    Random Number 
+       Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclemodel}
+      Scroll Element Into View    xpath=//*[@id="save-btn"]  
+      Wait Until Element Is Visible    xpath=//*[@id="save-btn"]     100s 
+      ${vehiclevin}      Random Number
+      Input Text    xpath=//*[@id="vehiclemodel"]    ${vehiclevin}
+      ${Vehiclevalue}     Random Number  
+      Input Text    xpath=//*[@id="vehiclemodel"]    ${Vehiclevalue}
+      validation error
 
  
