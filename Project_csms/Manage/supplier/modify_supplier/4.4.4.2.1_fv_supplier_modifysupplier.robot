@@ -1,9 +1,10 @@
+
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US  
 Library    String   
 Library    Collections     
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -18,12 +19,12 @@ Add and View supplier
      Set Browser Implicit Wait    20s
     Selenium2Library.Click Button    xpath=//*[@id="view"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="view"]   20s
-    
+
 Firstname Null validation
   
    
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   40s 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   100s 
     Selenium2Library.Input Text    xpath=//input[@id="fname"]    ${EMPTY}  
     Scroll Element Into View    xpath=//*[@id="update"] 
     validation error modify form
@@ -46,54 +47,54 @@ Last name Null validation
     
 
 Primary Address Line1 allowSpecial character
-    Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]   
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   100s
     Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    $&^&^* ()${
     updating data modify form
   
 Primary Address Line1 allownumbers
-     Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]    
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   60s 
     Selenium2Library.Input Text    xpath=//input[@id="paddress1"]    587567
     updating data modify form
 
     
 Primary Address Line2 allowSpecial character
-      Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]    
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   60s    
     Selenium2Library.Input Text    xpath=//input[@id="paddress2"]      $%&&&^$$
     updating data modify form
  
 Primary Address Line2 allownumbers
-      Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]    
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   60s     
     Selenium2Library.Input Text    xpath=//input[@id="paddress2"]      48477
     updating data modify form
      
 Pzipcode allownumbers
-      Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]   
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   60s    
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     56083
     updating data modify form
    
 Secondary Address Line1 allowSpecial character
-      Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]     
+      Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]    60s 
     Selenium2Library.Input Text      xpath=//input[@id="maddress1"]      &!@#$))
     updating data modify form
 
 
 Secondary Address Line1 allownumbers
-     Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   
+     Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   60s
     Selenium2Library.Input Text      xpath=//input[@id="maddress1"]     6793937
     updating data modify form
   
 Secondary Address Line2 allowSpecial character
-    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   
+    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   60s
     Selenium2Library.Input Text    xpath=//input[@id="maddress2"]      @#()!@${
     updating data modify form
 
     
 Secondary Address Line2 allownumbers
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]     
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]     60s
     Selenium2Library.Input Text    xpath=//input[@id="maddress2"]      8997788
     updating data modify form
 Mzipcode allownumbers
-    Selenium2Library.Page Should Contain Element  xpath=//*[@id="update"]     
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="update"]   60s     
     ${Zipcode}   Random Number    digits=5
     Selenium2Library.Input Text    xpath=//input[@id="mzip"]     ${Zipcode}
     updating data modify form
@@ -194,14 +195,15 @@ Faxnumber2
     
 Pcity
     Reload Page
+    set selenium speed   2s
     Set Global Variable   ${Index_string}   
     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string} 
     Selenium2Library.Wait Until Element Is Visible      xpath=//select[@id="selectsupplier"][@class="form-control"]    30s
     Click Button    xpath=//*[@id="view"]
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="view"]   20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="view"]   100s
     Scroll Element Into View     xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]    20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]    100s
     text splchar not allowed  pcity
     text number not allowed  pcity
     
@@ -233,9 +235,9 @@ Mzipcode nospecial characters
 
      text splchar not allowed  mzip
 Button
-     button rightname    update
-     button active    update
-     logout and close browser
+     button rightname    Update
+     button active    Update
+     
      
 
 

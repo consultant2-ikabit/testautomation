@@ -3,8 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String 
 Library    Collections     
-
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/button.robot
@@ -65,6 +64,6 @@ View non existing supplier
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string}
      List Should Contain Value  ${List_items}    ${suppnm_lowercase}
       List Should Not Contain Value    ${List_items}   SUPPLIER1  
-     logout and close browser
+
         
            

@@ -24,7 +24,7 @@ CustomerAdd
     primary houseaddress
     secondary houseaddress
     updating data 
-#Tests if the add functionality works  and record is added to DB  
+ 
     open link    customer    View
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="viewbtn"]  60s
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0

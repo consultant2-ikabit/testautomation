@@ -1,7 +1,7 @@
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -52,7 +52,3 @@ Add supplier cancel button reset fields
     Element Text Should Be     xpath=//input[@id="suppname"]    ${EMPTY}
     Element Text Should Be   xpath=//input[@id="suppemail"]        ${EMPTY}
     
-    
-
-    logout and close browser
- 

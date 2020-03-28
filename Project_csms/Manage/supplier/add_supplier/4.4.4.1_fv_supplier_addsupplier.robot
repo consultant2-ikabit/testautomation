@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -81,10 +81,10 @@ Supplier Name allow special character
 Supplier Name allow numeric value
     Reload Page
     
-    Selenium2Library.Wait Until Page Contains Element           xpath=//*[@id="suppemail"]  
+    Selenium2Library.Wait Until Element Is Visible           xpath=//*[@id="suppemail"]   100s
     ${String}     Generate Random String     5  chars=[NUMBERS]
     Selenium2Library.Input Text    xpath=//input[@id="suppname"]      ${String}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="suppemail"]    
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="suppemail"]    100s
 
   
     ${suppemail}     Email   
@@ -521,7 +521,7 @@ Faxnumber2
 
 Primary Address Line1 allowSpecial character
     Reload Page
-       Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="suppemail"]     20s
+       Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="suppemail"]     100s
     ${Suppnm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="suppname"]       ${Suppnm}  
     ${suppemail}     Email   
@@ -578,6 +578,7 @@ Primary Address Line1 allownumbers
 
 Primary Address Line2 allowSpecial character
     Reload Page
+    set selenium speed   1s
        Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="suppemail"]     
     ${Suppnm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="suppname"]       ${Suppnm}  

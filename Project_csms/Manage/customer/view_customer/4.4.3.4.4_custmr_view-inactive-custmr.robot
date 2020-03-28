@@ -54,7 +54,7 @@ view inactive customer
     updating data   
 # Delete the  customer   
     open link  customer  Delete 
-    
+    Set Selenium Speed    1s
      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]  
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
@@ -69,6 +69,7 @@ view inactive customer
     
 #View the customer
      open link  customer  View 
+     Set Selenium Speed    1s
       Selenium2Library.Page Should Contain Element    xpath=//*[@id="viewbtn"]
    
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0

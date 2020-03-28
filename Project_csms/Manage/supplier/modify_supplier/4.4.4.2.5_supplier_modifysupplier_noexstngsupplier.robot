@@ -3,12 +3,12 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String 
 Library   Collections    
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 *** Test Cases ***
 
-Add and view customer
+Add and view supplier
     login
     add and search supplier
     Click Button    xpath=//*[@id="view"]
@@ -35,5 +35,3 @@ Modify Details
     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
     List Should Not Contain Value     ${List_items}     SUPPLIER 
-    
-   logout and close browser

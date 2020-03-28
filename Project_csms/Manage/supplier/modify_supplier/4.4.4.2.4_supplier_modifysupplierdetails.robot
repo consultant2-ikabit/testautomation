@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String 
 Library   Collections    
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 *** Test Cases ***
@@ -24,7 +24,7 @@ Modify Details
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last_name_modify} 
     ${Last_name}=   Selenium2Library.Get Text   xpath=//input[@id="lname"]  
     Selenium2Library.Scroll Element Into View  xpath=//*[@id="update"]
-    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="update"]   
+    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="update"]     100s
      ${Phone Number}     Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     ${Secondary_number}=   Selenium2Library.Get Text    xpath=//input[@id="snumber"]  
@@ -75,5 +75,3 @@ Modify Details
     Element Text Should Be   xpath=//input[@id="mcity"]     ${City_modified}
     Element Text Should Be   xpath=//input[@id="mstate"]     ${State_modified}
     Element Text Should Be   xpath=//input[@id="mzip"]     ${Zip_modified}
-    
-    logout and close browser

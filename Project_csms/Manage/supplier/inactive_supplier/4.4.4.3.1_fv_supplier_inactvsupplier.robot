@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String   
 Library   Collections    
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -18,8 +18,8 @@ View supplier inactive with no existing supplier name
     login
      open link   supplier    Add  
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="suppemail"]    
-    ${suppnm}  Company
-     Selenium2Library.Input Text    xpath=//input[@id="suppname"]       ${suppnm}
+    ${suppconm}  Company
+     Selenium2Library.Input Text    xpath=//input[@id="suppname"]       ${suppconm}
     ${suppemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="suppemail"]     ${suppemail}
     ${First Name}   First Name
@@ -43,7 +43,7 @@ View supplier inactive with no existing supplier name
      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="deletebtn"]  
      Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
-    ${suppnm_lowercase}=   Convert To Lowercase    ${suppnm}
+    ${suppnm_lowercase}=   Convert To Lowercase    ${suppconm}
     ${Get_index}=  Get Index From List     ${List_items}      ${suppnm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
     Set Global Variable   ${Index_string}  
@@ -60,14 +60,14 @@ View supplier inactive with no existing supplier name
     Selenium2Library.Select Checkbox    xpath=//*[@id="supplier"]
     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
-    ${suppnm_lowercase}=   Convert To Lowercase    ${suppnm}
+    ${suppnm_lowercase}=   Convert To Lowercase    ${suppconm}
     ${Get_index}=  Get Index From List     ${List_items}      ${suppnm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
     Set Global Variable   ${Index_string}  
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string}
      List Should Contain Value  ${List_items}    ${suppnm_lowercase}
      
-     logout and close browser
+     
         
 
 

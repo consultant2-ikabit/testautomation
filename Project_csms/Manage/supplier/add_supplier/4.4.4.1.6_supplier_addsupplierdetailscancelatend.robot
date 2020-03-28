@@ -3,7 +3,7 @@ Library    Selenium2Library
   
 Library    FakerLibrary    locale=en_US
 Library   String    
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
 
@@ -22,7 +22,7 @@ Add Existing Supplier
        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="suppemail"]     20s
    
     ${suppnm}  Company
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${suppnm}
+    Selenium2Library.Input Text    xpath=//input[@id="suppname"]       ${suppnm}
     ${suppemail}     Email   
 
     Selenium2Library.Input Text    xpath=//input[@id="suppemail"]     ${suppemail}
@@ -33,7 +33,7 @@ Add Existing Supplier
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]  
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -59,7 +59,7 @@ Add Existing Supplier
     Selenium2Library.Input Text    xpath=//input[@id="mname"]     ${Middle Name}
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]  
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]  
     list select value    pnumbertype
     list select value    pcountrycode
     ${Phone Number}     Phone Number
@@ -85,4 +85,4 @@ Capture Error message
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
 
-    logout and close browser 
+

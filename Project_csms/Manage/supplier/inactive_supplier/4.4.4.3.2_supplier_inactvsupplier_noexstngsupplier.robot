@@ -5,7 +5,7 @@ Library   String
 Library   Collections      
 Resource    ../../Resources/genericfunctions.robot
 
-
+Suite Teardown    Close Browser
 
 
 *** Test Cases ***

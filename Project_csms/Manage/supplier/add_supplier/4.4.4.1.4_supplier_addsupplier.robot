@@ -4,7 +4,7 @@ Library    FakerLibrary    locale=en_US
 Library    String
 Library    Collections    
 Resource    ../../Resources/genericfunctions.robot
-
+Suite Teardown    Close Browser
 
 
 *** Test Cases ***
@@ -31,4 +31,4 @@ Supplier Add
     @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"]
      ${suppnm_lowercase}=   Convert To Lowercase    ${suppnm}
     List Should Contain Value    ${List_items}     ${suppnm_lowercase} 
-    logout and close browser
+   

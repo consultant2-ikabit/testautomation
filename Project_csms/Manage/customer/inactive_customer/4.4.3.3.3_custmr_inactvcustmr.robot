@@ -20,16 +20,17 @@ View inactive customer
     ${company_name}      Selenium2Library.Get Text    xpath=//input[@id="companyname"]
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
+    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
       ${co_email}      Selenium2Library.Get Text    xpath=//input[@id="email"]
-      Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-      Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
+      
+      
     ${First Name}   First Name
      Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First Name}
        ${First_name}      Selenium2Library.Get Text    xpath=//input[@id="fname"]
      ${Last Name}   Last Name
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
       ${Last_name}      Selenium2Library.Get Text    xpath=//input[@id="lname"]
-    Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]
+    Selenium2Library.Scroll Element Into View  xpath=//*[@id="savebtn"]
     ${Phone Number}     Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
      ${Phone_number}      Selenium2Library.Get Text    xpath=//input[@id="pnumber"]
@@ -74,7 +75,7 @@ View inactive customer
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
     Selenium2Library.Click Button  xpath=//*[@id="viewbtn"]    
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Element Text Should Be   xpath=//input[@id="companyname"]      ${company_name}
+    Element Text Should Be   xpath=//input[@id="company"]      ${company_name}
     Element Text Should Be   xpath=//input[@id="email"]    ${co_email} 
     Element Text Should Be   xpath=//input[@id="fname"]   ${First_name} 
     Element Text Should Be  xpath=//input[@id="lname"]   ${Last_name} 

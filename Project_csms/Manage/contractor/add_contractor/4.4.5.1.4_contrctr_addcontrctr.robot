@@ -3,8 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library   Collections 
-
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 
@@ -33,4 +32,4 @@ ContractorAdd
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     List Should Contain Value    ${List_items}     ${Companynm_lowercase}     
 
-    logout and close browser
+    

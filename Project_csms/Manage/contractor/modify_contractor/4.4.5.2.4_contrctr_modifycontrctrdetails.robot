@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String 
 Library   Collections    
-Test Teardown        Run Keyword And Continue On Failure    Log    FAIL
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 *** Test Cases ***
@@ -16,7 +16,7 @@ Add and view contractor
     
 Modify Details
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   20s 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   100s 
     ${First_name_modify}   First Name
     Selenium2Library.Input Text    xpath=//input[@id="fname"]         ${First_name_modify} 
     ${First_name}=   Selenium2Library.Get Text    xpath=//input[@id="fname"]   
@@ -24,7 +24,7 @@ Modify Details
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last_name_modify} 
     ${Last_name}=   Selenium2Library.Get Text   xpath=//input[@id="lname"]  
     Selenium2Library.Scroll Element Into View  xpath=//*[@id="submit"]
-    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="submit"]   20s 
+    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="submit"]   100s 
      ${Phone Number}     Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     ${Secondary_number}=   Selenium2Library.Get Text    xpath=//input[@id="snumber"]  
@@ -47,7 +47,11 @@ Modify Details
      ${Zip_modified}   Selenium2Library.Get Text        xpath=//input[@id="pzip"]   
   
     Selenium2Library.Select Checkbox    xpath=//input[@id="sameaspaddress"]
-    updating data modify form
+     Selenium2Library.Click Button   xpath=//*[@id="submit"]
+    Page Should Contain    Updating Data
+    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@class="btn btn-round btn-primary"]   30s
+    Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@class="btn btn-primary btn-round"]    30s
  
 #  Check modified details are saved
     Reload Page
@@ -62,7 +66,8 @@ Modify Details
     Element Text Should Be  xpath=//input[@id="lname"]   ${Last_name}   
     Element Text Should Be   xpath=//input[@id="snumber"]    ${Secondary_number}
     Scroll Element Into View    xpath=//*[@id="submit"] 
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="submit"]   20s
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="submit"]   100s
+    set selenium speed   2s
     Element Text Should Be   xpath=//input[@id="faxnumber1"]  ${Secondary_number}
     Element Text Should Be  xpath=//input[@id="faxnumber2"]  ${Secondary_number}
     Element Text Should Be   xpath=//input[@id="paddress1"]     ${Address1_modified}
@@ -76,4 +81,4 @@ Modify Details
     Element Text Should Be   xpath=//input[@id="mstate"]     ${State_modified}
     Element Text Should Be   xpath=//input[@id="mzip"]     ${Zip_modified}
     
-    logout and close browser
+    

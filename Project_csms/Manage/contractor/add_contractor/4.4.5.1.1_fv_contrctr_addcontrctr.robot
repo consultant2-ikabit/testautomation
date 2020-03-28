@@ -9,7 +9,7 @@ Resource    ../../Resources/numericalvalue.robot
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 ##
 *** Test Cases ***
     
@@ -20,39 +20,12 @@ Open contractor add form
 
 
 Company Name NotNull
-     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     100s
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
     mandatory fields
-    list select value    pnumbertype
-    list select value    pcountrycode
-    ${Phone Number}     Phone Number
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress 
-    secondary houseaddress
-    validation error
-  
-
-Company Name Allow special character
-    
-   Reload Page
-    
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     20s
-    ${String}     Generate Random String     4  chars=[NUMBERS]    
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]         ()%#$!@${String}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
-    ${coemail}     Email   
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    mandatory fields
-    list select value    pnumbertype
+     list select value    pnumbertype
     list select value    pcountrycode
     list select value    snumbertype
     list select value    scountrycode
@@ -63,36 +36,7 @@ Company Name Allow special character
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
     primary houseaddress
     secondary houseaddress
-    updating data
-
-Company Name allow numeric value
-    Reload Page
-    
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]      20s
-    ${String}     Generate Random String     5  chars=[NUMBERS]
-    Selenium2Library.Input Text    xpath=//input[@id="companyname"]      ${String}
-    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
-
-  
-    ${coemail}     Email   
-
-    Selenium2Library.Input Text    xpath=//input[@id="email"]     ${coemail}
-    Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
-    mandatory fields 
-    list select value    pnumbertype
-    list select value    pcountrycode
-    list select value    snumbertype
-    list select value    scountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
-    list select value   countrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
-    list select value  faxcountrycode
-    Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    primary houseaddress
-    secondary houseaddress
-    updating data
-
-
+    Validation Error
 Email NotNull
     Reload Page
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
@@ -101,7 +45,7 @@ Email NotNull
     ${coemail}     Email   
     Selenium2Library.Input Text    xpath=//input[@id="confirmemail"]     ${coemail}
     mandatory fields 
-    list select value    pnumbertype
+      list select value    pnumbertype
     list select value    pcountrycode
     list select value    snumbertype
     list select value    scountrycode
@@ -110,7 +54,6 @@ Email NotNull
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-    
     primary houseaddress
     secondary houseaddress
     Validation Error
@@ -123,7 +66,7 @@ Email Invalid
 #Check for Email-'gmail.com'
     Reload Page
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
-   
+    set selenium speed  2s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
@@ -141,14 +84,14 @@ Email Invalid
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
     list select value  faxcountrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum2"]    ${Phone Number}
-        primary houseaddress
+    primary houseaddress
     secondary houseaddress
     Validation Error
 
 #Check for Email-gmail@
 
     Reload Page
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]      100s
    
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -177,7 +120,7 @@ Email Invalid
 #Check for Email-gmail
 
     Reload Page
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     100s
    
    
     ${Companynm}  Company
@@ -206,7 +149,7 @@ Email valid
 
 
     Reload Page
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]     100s
    
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -914,8 +857,13 @@ Save and Cancel Button
      Reload Page
       Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s   
      Scroll Element Into View    xpath=//*[@class="btn btn-primary btn-round"] 
-     Element Should Be Enabled  xpath=//*[@class="btn btn-primary btn-round"] 
-     Element Should Be Enabled  xpath=//*[@class="btn btn-secondary btn-round"]
+     button active    Save
+     button rightname    Save
+      button active    Cancel
+     button rightname    Cancel
+     
+
+
     
 Cancel button reset fields
      Reload Page
@@ -950,7 +898,7 @@ Cancel button reset fields
     Textfield Value Should Be     xpath=//input[@id="companyname"]    ${EMPTY}
     Textfield Value Should Be   xpath=//input[@id="email"]        ${EMPTY}
     Textfield Value Should Be   xpath=//input[@id="confirmemail"]       ${EMPTY}
-    logout and close browser
+    
   
 
 

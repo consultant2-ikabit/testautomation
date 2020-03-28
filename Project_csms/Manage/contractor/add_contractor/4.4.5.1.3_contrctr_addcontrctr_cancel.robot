@@ -1,7 +1,7 @@
 ***Settings***
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
 
@@ -46,5 +46,3 @@ Add contractor cancel button reset fields
     
     Textfield Value Should Be   xpath=//input[@id="confirmemail"]       ${EMPTY}
     
-    logout and close browser
- 

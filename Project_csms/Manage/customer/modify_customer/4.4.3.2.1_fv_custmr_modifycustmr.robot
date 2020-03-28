@@ -12,22 +12,22 @@ Resource    ../../Resources/textfield.robot
 Resource    ../../Resources/button.robot
 
 *** Test Cases ***
-  
+ 
 Add and View customer
     login
     add and search customer
+      Set Browser Implicit Wait    50s
     Selenium2Library.Click Button    xpath=//*[@id="viewbtn"]
-    Selenium2Library.Page Should Contain Element  xpath=//*[@id="viewbtn"]   100s
-    
+ 
 Firstname Null validation
+   
+   
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
+    Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   100s
     Selenium2Library.Input Text    xpath=//input[@id="fname"]    ${EMPTY}
-    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  20s
-    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Page Should Contain    Validation Error
-    Selenium2Library.Click Button   xpath=//*[@id="validationMendatoryDismiss"][@class="btn btn-round btn-primary"]
-
+        Scroll Element Into View    xpath=//*[@id="update"] 
+        Set Selenium Speed    1s
+    validation error modify form 
     
 Last name Null validation
     Reload Page
@@ -39,13 +39,8 @@ Last name Null validation
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   60s 
     Selenium2Library.Input Text    xpath=//input[@id="lname"]    ${EMPTY}
-    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  20s
-    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
-    Page Should Contain    Validation Error
-    Selenium2Library.Click Button   xpath=//*[@id="validationMendatoryDismiss"][@class="btn btn-round btn-primary"]
-
-     
+        Scroll Element Into View    xpath=//*[@id="update"] 
+    validation error modify form
 
     
 
@@ -237,8 +232,8 @@ Mzipcode nospecial characters
 
      text splchar not allowed  mzip
 Button
-     button rightname    update
-     button active    update
+     button rightname    Update
+     button active    Update
   
 
 

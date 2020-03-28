@@ -14,7 +14,7 @@ Resource    ../../Resources/button.robot
 
 *** Test Cases ***
 
-View customer inactive with no existing customer name
+View customer inactive 
     login
     open link  customer  Add 
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="email"]      50s
@@ -41,8 +41,9 @@ View customer inactive with no existing customer name
 
     open link   customer  Delete 
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]        100s
+   
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     ${Get_index}=  Get Index From List     ${List_items}      ${Companynm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
@@ -50,18 +51,23 @@ View customer inactive with no existing customer name
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
     Selenium2Library.Click Button    xpath=//*[@id="submit"]
     Selenium2Library.Wait Until Page Contains Element   xpath=//*[@id="failDeleteDismiss"]
-    Selenium2Library.Click Button   xpath=//*[@id="failDeleteDismiss"]   
+    Selenium2Library.Click Button   xpath=//*[@id="failDeleteDismiss"]  
+      list default    selectcustomer
+    list multiple selection    selectcustomer
+    list select value  selectcustomer
+    button active    Delete
+    button rightname    Delete 
    
 
 #View deleted customer
     open link  customer  View
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="viewbtn"]     100s
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"] 
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"] 
     List Should Not Contain Value    ${List_items}    ${Companynm_lowercase}  
     Selenium2Library.Select Checkbox    xpath=//*[@id="customer"]
     Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
-    @{List_items}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]  
+    @{List_items}=  Get List Items   xpath=//select[@id="selectcustomer"][@class="form-control"]  
     ${Companynm_lowercase}=   Convert To Lowercase    ${Companynm}
     ${Get_index}=  Get Index From List     ${List_items}      ${Companynm_lowercase}   
     ${Index_string}=  Convert To String  ${Get_index} 
@@ -69,11 +75,5 @@ View customer inactive with no existing customer name
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectcustomer"][@class="form-control"]    ${Index_string}
      List Should Contain Value  ${List_items}   ${Companynm_lowercase} 
 
-Inactive form validation    
-     open link   customer  Delete
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="submit"]   100s
-    Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0   
-    list default    selectcustomer
-    list multiple selection    selectcustomer
-    list select value  selectcustomer
-    button active    submit
+
+   

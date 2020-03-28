@@ -3,8 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US  
 Library   String   
 Library    Collections    
- 
-Test Teardown    Run Keyword And Continue On Failure    Log   Fail
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -18,7 +17,7 @@ Add and View contractor
     Selenium2Library.Click Button    xpath=//*[@id="viewbtn"]
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="viewbtn"]  20s
 Firstname Null validation
-    
+    set selenium speed  2s
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="pnumber"]   40s 
     Selenium2Library.Input Text    xpath=//input[@id="fname"]    ${EMPTY} 
@@ -32,6 +31,7 @@ Firstname Null validation
     
 Last name Null validation
     Reload Page
+    set selenium speed    2s
     Set Global Variable   ${Index_string}   
     Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     Selenium2Library.Select From List By Index     xpath=//select[@id="selectsupplier"][@class="form-control"]    ${Index_string} 
@@ -215,8 +215,9 @@ Pcity
     Selenium2Library.Wait Until Element Is Visible      xpath=//select[@id="selectsupplier"][@class="form-control"]    30s
     Click Button    xpath=//*[@id="viewbtn"]
     Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="viewbtn"]   20s
-    Scroll Element Into View     xpath=//*[@id="submit"][@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="submit"][@class="btn btn-primary btn-round"]    20s
+    Scroll Element Into View     xpath=//*[@id="submit"]
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="submit"]   20s
+    Set Selenium Speed    2s
     text splchar not allowed  pcity
     text number not allowed  pcity
     
@@ -248,9 +249,9 @@ Mzipcode nospecial characters
 
      text splchar not allowed  mzip
 Button
-     button rightname    submit
-     button active    submit
-     logout and close browser
+     button rightname    Update
+     button active    Update
+
 
 
 

@@ -4,7 +4,7 @@ Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
 
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
 
@@ -54,7 +54,7 @@ View inactive supplier
     updating data   
 # Delete the  supplier  
      open link    supplier    Delete
-    
+    set selenium speed     1s
      Selenium2Library.Wait Until Page Contains Element  xpath=//*[@id="deletebtn"]  
      Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
     @{List_items}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]  
@@ -76,7 +76,7 @@ View inactive supplier
     Selenium2Library.Click Button  xpath=//*[@id="viewbtn"]    
      
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
-    
+    set selenium speed  1s
     Element Text Should Be   xpath=//input[@id="suppname"]      ${supp_name}
     Element Text Should Be   xpath=//input[@id="suppemail"]    ${supp_email} 
     Element Text Should Be   xpath=//input[@id="fname"]   ${First_name} 
@@ -92,5 +92,4 @@ View inactive supplier
      Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
       Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
     
-   
-     logout and close browser  
+ 

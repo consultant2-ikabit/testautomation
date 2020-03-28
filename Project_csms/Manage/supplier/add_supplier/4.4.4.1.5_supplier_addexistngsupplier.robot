@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    Collections    
 Library    FakerLibrary    locale=en_US
 Library   String    
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
 
@@ -71,4 +71,4 @@ Supplier Add sameEmailID
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
 
-    logout and close browser 
+ 

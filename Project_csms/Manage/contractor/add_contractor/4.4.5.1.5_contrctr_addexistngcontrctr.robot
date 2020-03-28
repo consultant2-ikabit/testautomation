@@ -4,9 +4,7 @@ Library    Selenium2Library
 Library    Collections    
 Library    FakerLibrary    locale=en_US
 Library   String    
-
-
-Test Teardown    Run Keyword If Test Failed     Close Browser  
+Suite Teardown    Close Browser
 
 Resource    ../../Resources/dropdownlist.robot 
 
@@ -71,5 +69,5 @@ Contractor Add sameEmailID
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
-    logout and close browser
+   
 

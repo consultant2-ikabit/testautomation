@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-Test Teardown        Run Keyword And Continue On Failure    Log    FAIL
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
 
@@ -86,8 +86,7 @@ View inactive contractor
     Element Text Should Be  xpath=//input[@id="paddress1"]    ${Address1_view} 
     Element Text Should Be  xpath=//input[@id="paddress2"]    ${Address2_view} 
     Element Text Should Be  xpath=//input[@id="pcity"]    ${City_view}
-     Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
-      Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
+    Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
+    Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
     
    
-     logout and close browser 

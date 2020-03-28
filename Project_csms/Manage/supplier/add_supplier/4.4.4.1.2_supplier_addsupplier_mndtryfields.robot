@@ -2,7 +2,7 @@
 Library    Selenium2Library  
 Library    FakerLibrary    locale=en_US
 Library   String    
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -195,7 +195,5 @@ Cancel button reset fields
     Textfield Value Should Be     xpath=//input[@id="suppname"]    ${EMPTY}
     Textfield Value Should Be   xpath=//input[@id="suppemail"]        ${EMPTY}
     
-    
-    logout and close browser
 
  

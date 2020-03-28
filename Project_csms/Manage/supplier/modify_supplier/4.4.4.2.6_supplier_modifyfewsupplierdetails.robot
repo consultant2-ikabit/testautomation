@@ -5,14 +5,14 @@ Library   String
 
 Resource    ../../Resources/genericfunctions.robot
 
-
+Suite Teardown    Close Browser
 *** Test Cases ***
     
 Supplier Add
     login
     add and search supplier
     Click Button    xpath=//*[@id="view"]
-    Selenium2Library.Wait Until Page Contains Element      xpath=//*[@id="view"]   
+    Selenium2Library.Wait Until Page Contains Element      xpath=//*[@id="view"]     100s
 
 Modify few Details
     Scroll Element Into View    xpath=//input[@id="pnumber"] 
@@ -47,4 +47,3 @@ Modify few Details
     Scroll Element Into View    xpath=//*[@id="update"] 
     #Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"]   20s
     
-   logout and close browser

@@ -6,7 +6,7 @@ Library   String
  
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
-Test Teardown    Run Keyword If Test Failed     Close Browser 
+Suite Teardown    Close Browser
 *** Test Cases ***
   
 
@@ -85,6 +85,5 @@ Add Existing Contractor
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
    
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    20s
-    logout and close browser
 
     

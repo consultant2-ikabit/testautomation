@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String
 Library    Collections      
-
+Suite Teardown    Close Browser
 
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/dropdownlist.robot 
@@ -81,8 +81,6 @@ view active supplier
      Element Text Should Be  xpath=//input[@id="pstate"]    ${State_view}
       Element Text Should Be  xpath=//input[@id="pzip"]    ${Zip_view}
     
-   
-     logout and close browser    
-    
+
      
      

@@ -24,7 +24,7 @@ Modify Details
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last_name_modify} 
     ${Last_name}=   Selenium2Library.Get Text   xpath=//input[@id="lname"]  
     Selenium2Library.Scroll Element Into View  xpath=//*[@id="update"]
-    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   40s 
+    Selenium2Library.Wait Until Element Is Visible   xpath=//*[@id="update"]   60s 
      ${Phone Number}     Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     ${Secondary_number}=   Selenium2Library.Get Text    xpath=//input[@id="snumber"]  

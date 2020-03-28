@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String   
 Library   Collections    
-Test Teardown        Run Keyword And Continue On Failure    Log    FAIL
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/numericalvalue.robot 
 Resource    ../../Resources/genericfunctions.robot
@@ -77,6 +77,6 @@ Inactive contractor form validation
      list multiple selection    selectsupplier
      
      list select value  selectsupplier
-     button active    deletebtn
+     button active    Delete
 
-     logout and close browser
+    

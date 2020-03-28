@@ -4,7 +4,7 @@ Library    FakerLibrary    locale=en_US
 Library   String  
 Library    Collections
 
-
+Suite Teardown    Close Browser
 
 Resource    ../../Resources/genericfunctions.robot
 *** Test Cases ***
@@ -66,5 +66,3 @@ Modify Details
       Element Text Should Be    xpath=//input[@id="mcity"]    ${Mcity}  
       Element Text Should Be    xpath=//input[@id="mstate"]    ${Mstate}  
       Element Text Should Be    xpath=//input[@id="mzip"]    ${Mzip}    
-
-     logout and close browser

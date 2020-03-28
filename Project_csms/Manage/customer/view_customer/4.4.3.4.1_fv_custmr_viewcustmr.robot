@@ -19,6 +19,7 @@ view customer form validation
     
     list default    selectcustomer
     list scrollbar  selectcustomer
+    list multiple selection    selectcustomer
     
      Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
      Selenium2Library.Select From List By Index    xpath=//select[@id="selectcustomer"][@class="form-control"]    5  
@@ -26,8 +27,8 @@ view customer form validation
      Selenium2Library.Select Checkbox   xpath=//*[@id="customer"]  
       Click Element At Coordinates   xpath=//select[@id="selectcustomer"][@class="form-control"]  0    0
       list multiple selection    selectcustomer
-     button rightname    viewbtn
-     button active   viewbtn
+     button rightname    View
+     button active   View
   
       Selenium2Library.Select From List By Index    xpath=//select[@id="selectcustomer"][@class="form-control"]    5  
      @{List_inactive}=  Get List Items   xpath=//select[@name="selectcustomer"][@class="form-control"]   

@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String    
 Library    Collections    
- 
+Suite Teardown    Close Browser
 Resource    ../../Resources/dropdownlist.robot 
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/button.robot
@@ -21,23 +21,20 @@ View Supplier
     
     
      Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
-     Selenium2Library.Select From List By Index    xpath=//select[@id="selectsupplier"][@class="form-control"]    5  
+     Selenium2Library.Select From List By Index    xpath=//select[@id="selectsupplier"][@class="form-control"]    10 
      @{List_items}=  Get List Items  xpath=//select[@id="selectsupplier"][@class="form-control"]  
      Selenium2Library.Select Checkbox   xpath=//*[@id="supplier"]  
       Click Element At Coordinates   xpath=//select[@id="selectsupplier"][@class="form-control"]  0    0
       list multiple selection    selectsupplier
-     button rightname    viewbtn
-     button active   viewbtn
+     button rightname    View
+     button active   View
   
       Selenium2Library.Select From List By Index    xpath=//select[@id="selectsupplier"][@class="form-control"]    5  
      @{List_inactive}=  Get List Items   xpath=//select[@id="selectsupplier"][@class="form-control"]   
       
      Should Not Be Equal      ${List_items}     ${List_inactive}   
    
-     
-  
-     logout and close browser
-    
+
 
 
 

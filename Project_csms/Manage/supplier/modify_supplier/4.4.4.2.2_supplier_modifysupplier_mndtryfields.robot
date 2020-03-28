@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    FakerLibrary    locale=en_US
 Library   String  
 Library    Collections
-
+Suite Teardown    Close Browser
 Resource    ../../Resources/genericfunctions.robot
 
 *** Test Cases ***
@@ -37,8 +37,6 @@ Last name Null validation
     Selenium2Library.Input Text    xpath=//input[@id="lname"]    ${EMPTY}
     Scroll Element Into View    xpath=//*[@id="update"] 
     validation error modify form
-   
-    
-    logout and close browser
+
 
 

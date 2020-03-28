@@ -75,11 +75,11 @@ Add Existing Customer
 #  Capture Error message
      Click Button    xpath=//*[@id="savebtn"] 
   
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]    40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]    120s
     ${Error_message}=  Get Text     xpath=//div[@id="apifetch-body"][@class="modal-body"]
     Page Should Contain     ${Error_message} 
     Log To Console    ${Error_message}    
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-primary btn-round"]    120s
 
     
