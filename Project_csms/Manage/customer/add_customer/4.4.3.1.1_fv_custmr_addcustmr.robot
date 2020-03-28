@@ -56,6 +56,7 @@ Company Name MaxLength
     list select value    pcountrycode
     list select value    snumbertype
     list select value    scountrycode
+    ${Phone Number}    Phone Number
     Selenium2Library.Input Text    xpath=//input[@id="snumber"]    ${Phone Number}
     list select value   countrycode
     Selenium2Library.Input Text    xpath=//input[@id="faxnum1"]    ${Phone Number}
@@ -412,7 +413,7 @@ First Name notNull
 First Name Special character and number not allowed
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
-     
+    Log to console  \n
     text splchar not allowed  fname
     
     text number not allowed  fname
@@ -422,6 +423,7 @@ First Name Special character and number not allowed
 Middle Name Special character and not allowed
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    log to console  \n
     text splchar not allowed  mname 
     text number not allowed  mname
     text spacebefore  mname
@@ -430,7 +432,7 @@ Middle Name Special character and not allowed
 Last Name notNull
         Reload Page
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
         ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -463,6 +465,7 @@ Last Name notNull
 Last Name Special character and number not allowed
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+     log to console  \n
     text splchar not allowed  lname 
     text number not allowed   lname
      text spacebefore  lname
@@ -474,23 +477,28 @@ Last Name Special character and number not allowed
 Primary Number Type validation
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    log to console  \n
     list default    pnumbertype
     list all     pnumbertype
     list select value    pnumbertype
+    list edit  pnumbertype
 
 
 Primary Country Code validation
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    log to console  \n
     list default    pcountrycode
     list all     pcountrycode
     list select value    pcountrycode
+    list multiple selection    pcountrycode
+    list edit    pcountrycode
 
 
 Primary Number NULL validation
     Reload Page
     
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
         ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -523,22 +531,27 @@ Primary Number NULL validation
 Primary Number 
     Reload Page
     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Log To Console  \n
     numeric noalphabets   pnumber
     numeric nospecialcharacter   pnumber
     numeric space   pnumber
     
     
 Secondary Number Type validation
-    
+    Log To Console  \n
     list default    pnumbertype
     list all     pnumbertype
     list select value    pnumbertype
+    list multiple selection    pnumbertype
+    list edit    pnumbertype
 
 
 Secoundary Country Code validation
-    
+    Log To Console  \n
     list default    pcountrycode
     list all     pcountrycode
+    list select value    pcountrycode
+    list edit    pcountrycode
 
     
 
@@ -552,10 +565,11 @@ Secondary Number
     numeric space   snumber
     
 Country Code validation
-    
+    Log To Console  \n    
     list default    countrycode
     list all     countrycode
     list select value    countrycode
+    list edit    countrycode
   
     
 Faxnumber1 
@@ -570,27 +584,25 @@ Faxnumber1
         
 
 Faxcountry Code validation
-    
+    log to Console  \n
     list default    faxcountrycode
     list all     faxcountrycode
     list select value    faxcountrycode
+    list edit    faxcountrycode
     
     
 Faxnumber2 
     Reload Page
-   Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+   Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     Scroll Element Into View   xpath=//*[@class="btn btn-primary btn-round"]
     numeric noalphabets   faxnum2
-
-
     numeric nospecialcharacter   faxnum2
-   
     numeric space   faxnum2
 
 
 Primary Address Line1 allowSpecial character
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
@@ -620,10 +632,9 @@ Primary Address Line1 allowSpecial character
     updating data
 
 Primary Address Line1 allownumbers
-        Reload Page
-        Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
-
-       ${Companynm}  Company
+    Reload Page
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
+     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
     ${coemail}     Email   
@@ -652,7 +663,7 @@ Primary Address Line1 allownumbers
 
 Primary Address Line2 allowSpecial character
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
@@ -677,11 +688,13 @@ Primary Address Line2 allowSpecial character
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
     secondary houseaddress
+    Set Selenium Speed    1s
     updating data
+    
      Run Keyword And Ignore Error    Log     Fail
 Primary Address Line2 allownumbers
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
         ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -705,7 +718,6 @@ Primary Address Line2 allownumbers
     Selenium2Library.Input Text    xpath=//input[@id="pcity"]     ${City}
     Selenium2Library.Input Text    xpath=//input[@id="pstate"]     ${State}
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
-    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@class="btn btn-primary btn-round"]  20s 
     updating data
 
   
@@ -716,7 +728,7 @@ Primary Address Line2 allownumbers
 
 Pcity    
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     text splchar not allowed  pcity
     text number not allowed  pcity
     
@@ -725,7 +737,7 @@ Pcity
   
 Pstate 
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     text splchar not allowed  pstate
     text number not allowed  pstate
    
@@ -733,14 +745,14 @@ Pstate
 
 Pzipcode nospecial characters
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     text splchar not allowed  pzip
    
 
 
 Pzipcode allownumbers
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]    40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]    100s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
     Selenium2Library.Wait Until Element Is Visible    xpath=//input[@id="email"]    
@@ -768,11 +780,12 @@ Pzipcode allownumbers
     ${Zipcode}   Random Number    digits=5
     Selenium2Library.Input Text    xpath=//input[@id="pzip"]     ${Zipcode}
     secondary houseaddress
+    Set Selenium Speed  1s
     updating data
 
 Secondary Address Line1 allowSpecial character
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
 
     ${Companynm}  Company
@@ -806,7 +819,7 @@ Secondary Address Line1 allowSpecial character
 
 Secondary Address Line1 allownumbers
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -843,7 +856,7 @@ Secondary Address Line1 allownumbers
   
 Secondary Address Line2 allowSpecial character
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -874,7 +887,7 @@ Secondary Address Line2 allowSpecial character
     
 Secondary Address Line2 allownumbers
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
 
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
@@ -905,7 +918,7 @@ Secondary Address Line2 allownumbers
 
 Mcity    
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     text splchar not allowed  mcity
     text number not allowed  mcity
     
@@ -914,21 +927,21 @@ Mcity
 
 Mstate 
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     text splchar not allowed  mstate
     text number not allowed  mstate
    
 
 
 Mzipcode nospecial characters
-     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
      text splchar not allowed  mzip
    
 
 
 Mzipcode allownumbers
     Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
      
@@ -960,14 +973,14 @@ Mzipcode allownumbers
  
 Save and Cancel Button   
      Reload Page
-     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     20s
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
      Scroll Element Into View    xpath=//*[@class="btn btn-primary btn-round"] 
      Element Should Be Enabled  xpath=//*[@class="btn btn-primary btn-round"] 
      Element Should Be Enabled  xpath=//*[@class="btn btn-secondary btn-round"]
     
 Cancel button reset fields
      Reload Page
-    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     40s
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     100s
     ${Companynm}  Company
     Selenium2Library.Input Text    xpath=//input[@id="companyname"]       ${Companynm}
      ${coemail}     Email   
@@ -1000,16 +1013,7 @@ Cancel button reset fields
     Textfield Value Should Be   xpath=//input[@id="email"]        ${EMPTY}
     Textfield Value Should Be   xpath=//input[@id="confirmemail"]       ${EMPTY}
 
-  
-
-
-
-   
-    
-
-    
-    
-
+# test
 
     
  
