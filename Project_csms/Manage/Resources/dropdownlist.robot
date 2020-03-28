@@ -1,20 +1,22 @@
 ***Settings***
 Library    Selenium2Library
 Library    Collections
+Library  String
+
 
 
 ***Keyword***
 
 list default 
    [arguments]  ${listID}
-   ${var} =  Get Value    xpath=//*[@id="${listID}"] 
+   ${var} =  Get Selected List Value   xpath=//*[@id="${listID}"] 
    Log To Console  default value:  ${var}
 
 list all
     [arguments]  ${listID}
    @{items}=    Selenium2Library.Get List Items    xpath=//*[@id="${listID}"]   
   
-   Log To Console    ${items}  /n  
+   Log To Console    ${items}   
    Run Keyword And Ignore Error    Log    Listing all items is not possible
 
 list select value 
@@ -26,17 +28,22 @@ list select value
    
 list order 
      [arguments]  ${listID}
-      @{items}=   Get List Items   xpath=//select[@id="${listID}"]  
-       @{order_alphbet}=   Collections.Sort List   ${items}
-       Lists Should Be Equal   ${items}    ${order_alphbet}  
-      
-      Log to Console   ${listID}  ${order_alphbet} are in alphabetical order                
-      Run Keyword And Ignore Error    Log    list are not in alphabetical order
+      @{items}   Get List Items   xpath=//select[@id="${listID}"]
+      Remove From List    ${items}    0
+      log to console   ${items} 
+      ${order_alphabet}  Copy List      ${items}   
+      log to console        ${order_alphabet}   
+      Sort List    ${order_alphabet}
+      log to console        ${order_alphabet}  
+      Lists Should Be Equal    ${order_alphabet}   ${items}    
+      Log to Console   list is in alphabetical order                
+      Run Keyword And Ignore Error    Log    list is not in alphabetical order
     
 list edit
       [arguments]  ${listID}
-      Click Element    xpath=//select[@id="${listID}"]
-      Input Text    xpath=//select[@id="${listID}"]     dropdown
+       ${Status}  Get Element Attribute    xpath=//select[@id="${listID}"]     attribute=option
+       Run Keyword If  ${Status}== None     Log to Console    List cannot be edited
+
 
 list multiple selection
     [arguments]  ${listID}
@@ -51,6 +58,9 @@ list frozen
 
 list scrollbar
        [arguments]  ${listID}
-     Scroll element Into View     xpath=//select[@id="${listID}"]    
+     ${Status}    Get Element Attribute   xpath=//select[@id="${listID}"]    attribute=overflow-y
+     log to console    ${Status}  
+     Run Keyword If  ${Status}== None     Log to Console    Vertical scroll bar is visible
+#   Scroll element Into View     xpath=//select[@id="${listID}"]    
      
     

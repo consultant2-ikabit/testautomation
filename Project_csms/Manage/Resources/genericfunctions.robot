@@ -5,7 +5,7 @@ Library   String
 Library   Collections    
 
 *** Variables ***
-${LOGIN URL}     localhost:3000
+${LOGIN URL}     http://eactpp-20190822174132-hostingbucket-csmsuser.s3-website-us-west-2.amazonaws.com/
 ${BROWSER}        Chrome
 ${Address1}      36 Wild Rose Ave.
 ${Address2}      South Mayflower Drive
@@ -14,6 +14,8 @@ ${State}         FL
 ${Zipcode}        32806
 ${Spl_char}      ")%#@*&!"
 ${Number}         9837489479
+${License Number}   A12345678
+${value}   Please select type of user
 
 
 ***Keywords***
@@ -23,9 +25,9 @@ login
     Maximize Browser Window
     Set Browser Implicit Wait    20
   
-    Selenium2Library.Input Text  xpath=//input[@id="loginID"]     billgates@gmail.com
-    Selenium2Library.Input Text  xpath=//input[@id="password"]    test123A
-    Selenium2Library.Input Text  xpath=//input[@id="companyID"]   116101115116
+   Selenium2Library.Input Text  xpath=//input[@id="loginID"]     divya.ab@gmail.com
+    Selenium2Library.Input Text  xpath=//input[@id="password"]     Test12@34
+    Selenium2Library.Input Text  xpath=//input[@id="companyID"]   99115109115
     Click Button   xpath=//*[@class="btn btn-primary" and @id="submit"]
     Wait Until Page Contains Element  xpath=//*[@href="/logout"]     
            
@@ -57,10 +59,10 @@ updating data
     
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
     Page Should Contain    Updating Data
-    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@class="btn btn-round btn-primary"]   10s
+    Selenium2Library.Wait Until Page Contains Element   xpath=//*[@class="btn btn-round btn-primary"]   30s
     Selenium2Library.Click Button   xpath=//*[@class="btn btn-round btn-primary"]
     Run Keyword And Ignore Error    Fail    
-    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@class="btn btn-primary btn-round"]    20s
+    Selenium2Library.Wait Until Page Contains Element  xpath=//*[@class="btn btn-primary btn-round"]    30s
 
 
 validation error
@@ -72,9 +74,9 @@ validation error
     Selenium2Library.Wait Until Page Contains Element  xpath=//*[@class="btn btn-primary btn-round"]    
  
 updating data modify form 
-    Scroll Element Into View    xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@class="btn btn-primary btn-round"]  50s
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
+    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  100s
+    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
     Page Should Contain    Updating Data
     Selenium2Library.Click Button   xpath=//*[@id="successDismiss"][@class="btn btn-round btn-primary"]
     Selenium2Library.Wait Until Element Is Visible    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  50s
@@ -82,9 +84,9 @@ updating data modify form
 
    
 validation error modify form 
-    Scroll Element Into View    xpath=//*[@class="btn btn-primary btn-round"]
-    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@class="btn btn-primary btn-round"]  50s
-    Selenium2Library.Click Button   xpath=//*[@class="btn btn-primary btn-round"]
+    Scroll Element Into View    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
+    Selenium2Library.Wait Until Page Contains Element    xpath=//*[@id="update"][@class="btn btn-primary btn-round"]  50s
+    Selenium2Library.Click Button   xpath=//*[@id="update"][@class="btn btn-primary btn-round"]
     Page Should Contain    Validation Error
     Selenium2Library.Click Button   xpath=//*[@id="validationMendatoryDismiss"][@class="btn btn-round btn-primary"]
 
@@ -174,6 +176,19 @@ mandatory fields
     Selenium2Library.Input Text    xpath=//input[@id="lname"]     ${Last Name}
     Selenium2Library.Scroll Element Into View  xpath=//*[@class="btn btn-primary btn-round"]
     ${Phone Number}     Phone Number
-    Selenium2Library.Input Text    xpath=//input[@id="pnumber"]    ${Phone Number}   
+    Selenium2Library.Input Text    xpath=//input[@name="Primary Phone Number"]    ${Phone Number}
     
+employee primary houseaddress 
+    Selenium2Library.Input Text    xpath=//input[@id="primaryAddressLine1"]     ${Address1}
+    Selenium2Library.Input Text    xpath=//input[@id="primaryAddressLine2"]      ${Address2}
+    Selenium2Library.Input Text    xpath=//input[@id="primaryAddressCity"]     ${City}
+    Selenium2Library.Input Text    xpath=//input[@id="primaryAddressState"]     ${State}
+    Selenium2Library.Input Text    xpath=//input[@id="primaryAddressZipcode"]     ${Zipcode}
+     
+employee secondary houseaddress 
+    Selenium2Library.Input Text    xpath=//input[@id="mailingAddressLine1"]     ${Address1}
+    Selenium2Library.Input Text    xpath=//input[@id="mailingAddressLine2"]      ${Address2}
+    Selenium2Library.Input Text    xpath=//input[@id="mailingAddressCity"]     ${City}
+    Selenium2Library.Input Text    xpath=//input[@id="mailingAddressState"]     ${State}
+    Selenium2Library.Input Text    xpath=//input[@id="mailingAddressZipcode"]     ${Zipcode}
     

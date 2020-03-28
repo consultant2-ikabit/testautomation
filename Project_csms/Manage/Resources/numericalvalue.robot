@@ -31,10 +31,7 @@ numeric nospecialcharacter
     Selenium2Library.Input Text   xpath=//input[@id="${ID}"]    )&^%$$
     Selenium2Library.Element Should Not Contain    xpath=//input[@id="${ID}"]    )&^%$$
     Log to Console      restrict special characters
-numeric maxlength
-     [arguments]  ${ID}
-     Selenium2Library.Input Text   xpath=//input[@id="${ID} "]   ${MAX_NUMERIC_LENGTH}
-     Log To Console  ${ID} validation for maximum length
+
      
 numeric maximumlength    
     [arguments]  ${ID}
@@ -48,7 +45,5 @@ numeric space
    ${number_space}   Selenium2Library.Input Text   xpath=//input[@id="${ID}"]    3333 44446  
    ${number_nospace}      Selenium2Library.Get Value   xpath=//input[@id="${ID}"]     
    Should Not Be Equal       ${number_space}       ${number_nospace}  
-   Log to Console   ${number_space}
-   Log to Console   ${number_nospace} 
-    Log To Console   validation for numeric space
+    Log To Console   validation for numeric space successful
      

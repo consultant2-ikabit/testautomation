@@ -1,14 +1,15 @@
 ***Settings***
 Library    Selenium2Library
+Library   String
 Resource   dropdownlist.robot  
-Resource   data.robot
+
 
 ***Variables***
 ${NUMBER}  4235569987
 ${MIN_LENGTH}  IB
 ${MAX_LENGTH}   SOME STRING TO VERIFY MAX LENGTH
-${SPC_BEFORE}   ${SPACE}STRING
-${SPC_AFTER}   STRING${SPACE}
+${SPC_BEFORE}   ${SPACE} STRING
+${SPC_AFTER}   STRING${SPACE}AFTER
 ${SPL_CHAR}    ![a-zA-Z0-9 ]*
 ${NUM}         [0-9]*
 
@@ -25,7 +26,7 @@ text splchar allow
     Selenium2Library.Input Text   xpath=//input[@id="${ID}"]      @#$@!@$
     ${PATTERN}=  Selenium2Library.Get Element Attribute     xpath=//input[@id="${ID}"]    attribute=pattern
     Should Be Equal    ${PATTERN}   ${SPL_CHAR}   
-    Log To Console   ${ID} Text allows special character
+    Log To Console    Text allows special character
     
 
 text no alphabets
@@ -82,15 +83,16 @@ text maxlength
 text spacebefore       
       [arguments]  ${ID}
       
-     Selenium2Library.Input Text    xpath=//input[@id="${ID}"]   ${SPC_BEFORE}
-     ${box text}=       Selenium2Library.Get Value    xpath=//input[@id="${ID}"]
-     Should Not Be Equal    ${SPC_BEFORE}    ${box text}    
+     Selenium2Library.Input Text    xpath=//input[@id="${ID}"]    " STRING"
+#     ${box text}       Selenium2Library.Get Value    xpath=//input[@id="${ID}"]
+     Textfield Value Should Be  xpath=//input[@id="${ID}"]    STRING    
+      log to console  Textfield does accept space before 
  
 
 text spaceafter
        [arguments]  ${ID}
      Selenium2Library.Input Text    xpath=//input[@id="${ID}"]   ${SPC_AFTER}
-       ${box text}=       Selenium2Library.Get Value    xpath=//input[@id="${ID}"]
-     Should Not Be Equal    ${SPC_BEFORE}    ${box text}  
+     Textfield Value Should Be    xpath=//input[@id="${ID}"]    STRINGAFTER   
+     log to console  Textfield does accept space after 
   
     
